@@ -35,14 +35,14 @@ export const LaneComponent = ({
   laneStatus,
 }: DataProps): JSX.Element => (
   <Basis>
-    <div className="p-2 bg-gray-50 rounded shadow-sm h-full relative">
-      <div className="flex items-center my-2">
+    <div className="bg-gray-50 rounded shadow-sm h-full relative">
+      <div className="flex items-center sticky top-0 bg-gray-50 px-2 py-4">
         {getStatusLaneDot(laneStatus)}
         <span className="font-semibold text-gray-500 text-sm italic">
           {TicketStatus[laneStatus].toUpperCase()}
         </span>
       </div>
-      <div>
+      <div className="p-2 pt-0">
         {tickets.map((ticket) => (
           <Card key={ticket.id} {...ticket} />
         ))}
