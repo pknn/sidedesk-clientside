@@ -5,5 +5,5 @@ interface PrimitiveProps {
 }
 
 export const PageWrapper = ({ children }: PrimitiveProps): JSX.Element => (
-  <div className="bg-gray-200 relative h-full">{children}</div>
+  <div className="bg-gray-200 relative h-full min-h-screen">{children}</div>
 )
