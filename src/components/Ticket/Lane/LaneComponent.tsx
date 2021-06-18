@@ -1,4 +1,9 @@
 import React from 'react'
+import {
+  Droppable,
+  DroppableProvided,
+  DroppableStateSnapshot,
+} from 'react-beautiful-dnd'
 
 import { Ticket, TicketStatus } from 'app/types/Ticket'
 import { Card } from 'app/components/Ticket/Card'
@@ -8,6 +13,8 @@ interface DataProps {
   tickets: Ticket[]
   laneStatus: TicketStatus
 }
+
+type ComponentProps = DataProps
 
 const getStatusLaneDotColor = (laneStatus: TicketStatus) => {
   switch (laneStatus) {
@@ -33,25 +40,32 @@ const getStatusLaneDot = (laneStatus: TicketStatus) => {
 export const LaneComponent = ({
   tickets,
   laneStatus,
-}: DataProps): JSX.Element => (
+}: ComponentProps): JSX.Element => (
   <Basis>
-    <div className="bg-gray-50 rounded shadow-sm h-full relative">
-      <div className="flex items-center sticky top-0 bg-gray-50 px-2 py-4">
-        {getStatusLaneDot(laneStatus)}
-        <span className="font-semibold text-gray-500 text-sm italic">
-          {TicketStatus[laneStatus].toUpperCase()}
-        </span>
-      </div>
-      <div className="p-2 pt-0">
-        {tickets.map((ticket) => (
-          <Card
-            key={ticket.id}
-            id={ticket.id}
-            title={ticket.title}
-            reporterName={ticket.reporterName}
-          />
-        ))}
-      </div>
-    </div>
+    <Droppable droppableId={TicketStatus[laneStatus]}>
+      {(provided: DroppableProvided, snapshot: DroppableStateSnapshot) => (
+        <div
+          ref={provided.innerRef}
+          className="bg-gray-50 rounded shadow-sm h-full relative"
+        >
+          <div className="flex items-center sticky top-0 bg-gray-50 px-2 py-4">
+            {getStatusLaneDot(laneStatus)}
+            <span className="font-semibold text-gray-500 text-sm italic">
+              {TicketStatus[laneStatus].toUpperCase()}
+            </span>
+          </div>
+          <div className="p-2 pt-0">
+            {tickets.map((ticket) => (
+              <Card
+                key={ticket.id}
+                id={ticket.id}
+                title={ticket.title}
+                reporterName={ticket.reporterName}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </Droppable>
   </Basis>
 )
