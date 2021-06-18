@@ -13,6 +13,12 @@ export interface DataProps {
   rejectedTickets: Ticket[]
 }
 
+export interface ActionProps {
+  move: () => void
+}
+
+type ComponentProps = DataProps & ActionProps
+
 const toLaneComponent = (props: DataProps) =>
   ticketStatusOptions.map((ticketStatus: TicketStatus) => (
     <Lane
@@ -22,7 +28,7 @@ const toLaneComponent = (props: DataProps) =>
     />
   ))
 
-export const BoardComponent = (props: DataProps): JSX.Element => {
+export const BoardComponent = (props: ComponentProps): JSX.Element => {
   const handleDragEnd = (result: DropResult) => {
     const { source, destination } = result
     console.log(source, destination)
