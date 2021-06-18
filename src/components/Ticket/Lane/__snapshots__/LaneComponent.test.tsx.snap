@@ -21,554 +21,304 @@ exports[`<LaneComponent /> should render correctly 1`] = `
       className="p-2 pt-0"
     >
       <CardComponent
-        createdAt={2021-11-03T23:48:47.140Z}
-        description="In ut facilis incidunt. Nostrum suscipit molestias labore ad. Unde sed sunt. Libero praesentium esse praesentium debitis expedita quia nulla."
         id={7532}
         key="7532"
-        reporterEmail="Jalen.Rutherford20@yahoo.com"
         reporterName="Jalen Rutherford"
-        status={4}
         title="Repudiandae accusantium et nihil aut in animi numquam quis laborum."
-        updatedAt={2022-04-17T05:56:34.960Z}
       />
       <CardComponent
-        createdAt={2021-08-22T17:24:13.197Z}
-        description="Officia unde impedit itaque placeat quas veniam. Et deserunt dolores impedit a unde officia et. Blanditiis accusamus maiores minus atque dolor qui sit. Facere incidunt suscipit qui earum natus fuga."
         id={81169}
         key="81169"
-        reporterEmail="Nathan_Langosh@hotmail.com"
         reporterName="Nathan Langosh"
-        status={4}
         title="Reiciendis excepturi rem omnis repudiandae odit quis nulla veritatis necessitatibus."
-        updatedAt={2022-03-18T09:54:41.375Z}
       />
       <CardComponent
-        createdAt={2022-02-02T16:20:20.660Z}
-        description="Consequatur est ducimus tenetur blanditiis enim molestiae provident. Vel ut nemo consectetur quod cum ipsum aspernatur voluptatem. Est sapiente repellendus sequi. Quibusdam quae ea veniam beatae in voluptate numquam quia sit."
         id={65146}
         key="65146"
-        reporterEmail="Delaney.Lesch21@gmail.com"
         reporterName="Delaney Lesch"
-        status={4}
         title="Voluptates ipsum aut qui occaecati iste eius ut aut itaque."
-        updatedAt={2022-01-17T23:12:42.517Z}
       />
       <CardComponent
-        createdAt={2022-01-15T07:30:32.528Z}
-        description="Blanditiis molestias enim suscipit nam ipsum est consequatur. Nemo occaecati eaque voluptatem dolor. Porro quo fuga suscipit deserunt repellendus. Hic ad enim iure error ut."
         id={83822}
         key="83822"
-        reporterEmail="Cathy33@gmail.com"
         reporterName="Cathy Stark"
-        status={4}
         title="Cum delectus eos qui occaecati non ipsa ipsum ut inventore."
-        updatedAt={2022-05-06T06:48:03.418Z}
       />
       <CardComponent
-        createdAt={2022-05-09T06:05:30.208Z}
-        description="Voluptatum rem vel accusantium reprehenderit qui alias beatae aut. Magnam deleniti et necessitatibus quia ut eveniet voluptas eius explicabo. Asperiores veniam dolores sunt ea incidunt ex incidunt assumenda. Dolorum cumque aut."
         id={12138}
         key="12138"
-        reporterEmail="Shania_Hermann@yahoo.com"
         reporterName="Shania Hermann"
-        status={4}
         title="Vitae et alias necessitatibus vitae laudantium voluptatem saepe laborum animi."
-        updatedAt={2022-04-05T03:02:56.442Z}
       />
       <CardComponent
-        createdAt={2021-08-05T10:14:52.430Z}
-        description="Recusandae iste consequatur dolores saepe. Quae omnis ipsam. Deleniti qui libero optio quisquam nulla qui. Cum mollitia quibusdam autem porro consequatur voluptate et."
         id={978}
         key="978"
-        reporterEmail="Dillon33@hotmail.com"
         reporterName="Dillon Stiedemann"
-        status={4}
         title="Est harum sunt ut deserunt cupiditate dolor ut non sint."
-        updatedAt={2022-04-28T07:40:53.890Z}
       />
       <CardComponent
-        createdAt={2021-08-08T06:59:45.259Z}
-        description="Dolores et eveniet autem consectetur fugiat. Aut aperiam rerum sit aut expedita. Est voluptatem ducimus eligendi ex animi impedit esse voluptates eos. Qui a ullam quos consequuntur vel."
         id={42522}
         key="42522"
-        reporterEmail="Dave_Schmitt@yahoo.com"
         reporterName="Dave Schmitt"
-        status={4}
         title="Consequatur corrupti consectetur labore expedita cum architecto laboriosam dolores consectetur."
-        updatedAt={2022-04-15T07:53:14.311Z}
       />
       <CardComponent
-        createdAt={2022-06-16T23:27:05.884Z}
-        description="Omnis vel necessitatibus. Voluptatem sed nam. Ducimus corrupti rerum aperiam placeat aut suscipit quia sint. Eligendi libero quas possimus adipisci libero alias."
         id={39460}
         key="39460"
-        reporterEmail="Jailyn.Cummerata3@gmail.com"
         reporterName="Jailyn Cummerata"
-        status={4}
         title="Laborum quae architecto pariatur qui possimus architecto est eum et."
-        updatedAt={2021-11-13T22:33:37.367Z}
       />
       <CardComponent
-        createdAt={2022-06-07T00:52:06.175Z}
-        description="Est expedita iste distinctio consequatur vel blanditiis aut soluta qui. Nihil iusto recusandae. Iusto et omnis rerum. Et dolorem voluptas."
         id={45652}
         key="45652"
-        reporterEmail="Cullen39@yahoo.com"
         reporterName="Cullen Harvey"
-        status={4}
         title="Qui neque fugiat quia in quidem eos quos et nesciunt."
-        updatedAt={2022-01-21T13:57:03.770Z}
       />
       <CardComponent
-        createdAt={2021-09-12T12:40:58.644Z}
-        description="Excepturi modi ipsum neque repellendus repudiandae iste provident. Cupiditate hic magni dolor rerum porro aut qui. Quas aliquam et atque quidem numquam cum eveniet. Repellendus sint amet laborum voluptate esse sint voluptatibus in quaerat."
         id={17100}
         key="17100"
-        reporterEmail="Sandrine_Glover@hotmail.com"
         reporterName="Sandrine Glover"
-        status={4}
         title="Minus reprehenderit perferendis doloribus id maxime occaecati eum dolores est."
-        updatedAt={2021-08-10T01:16:36.691Z}
       />
       <CardComponent
-        createdAt={2022-04-30T06:05:12.884Z}
-        description="Nihil similique hic qui eos ut sequi amet voluptas. Fugiat nam doloribus sapiente. Voluptates eligendi et commodi voluptas. Ut voluptatum magnam distinctio."
         id={92161}
         key="92161"
-        reporterEmail="Theodora87@hotmail.com"
         reporterName="Theodora Gislason"
-        status={4}
         title="Voluptas deserunt provident non rem ut eius sit sequi earum."
-        updatedAt={2021-09-09T01:07:13.511Z}
       />
       <CardComponent
-        createdAt={2022-01-14T19:00:35.536Z}
-        description="Et eos veritatis quo dolores nulla commodi ipsam sit. Provident nam et ea atque est id ut debitis. Tempora sed voluptatibus laudantium quos. Quod quia autem a a dolorem est possimus est."
         id={91717}
         key="91717"
-        reporterEmail="Gunner66@yahoo.com"
         reporterName="Gunner Batz"
-        status={4}
         title="Aut voluptas et et inventore aliquam fugiat aperiam perferendis architecto."
-        updatedAt={2021-10-22T14:59:27.738Z}
       />
       <CardComponent
-        createdAt={2021-10-17T22:48:05.356Z}
-        description="Sit ea non possimus voluptatem sapiente omnis error ipsa rerum. Sed eum ex aperiam voluptatum. Voluptate labore mollitia dolore eveniet in porro dignissimos. Aut fuga qui molestias alias alias debitis suscipit."
         id={10816}
         key="10816"
-        reporterEmail="Anahi.Collins64@yahoo.com"
         reporterName="Anahi Collins"
-        status={4}
         title="Animi voluptatem minus quasi eos corporis quibusdam vel nostrum eos."
-        updatedAt={2022-02-19T06:01:59.329Z}
       />
       <CardComponent
-        createdAt={2021-07-15T14:27:22.905Z}
-        description="Nesciunt praesentium sint illo dolores atque deleniti neque ipsam dolorum. Voluptatem ut soluta eos eos ut voluptatum ipsa. Incidunt quam placeat excepturi culpa et quae suscipit illum voluptatem. Autem nihil iusto aut vero dolor."
         id={90098}
         key="90098"
-        reporterEmail="Clovis.Zulauf@yahoo.com"
         reporterName="Clovis Zulauf"
-        status={4}
         title="Modi doloribus voluptatem maiores impedit magnam nulla ipsa asperiores itaque."
-        updatedAt={2022-04-19T06:50:36.931Z}
       />
       <CardComponent
-        createdAt={2022-01-30T23:42:56.563Z}
-        description="Doloremque est reiciendis vel asperiores doloribus alias rerum consectetur. Excepturi vel est dolorem laboriosam facere dignissimos minima. Earum repellat quam voluptatem error corporis quis illum. Est perferendis tempora rerum saepe in et."
         id={72960}
         key="72960"
-        reporterEmail="Mateo_Ferry32@yahoo.com"
         reporterName="Mateo Ferry"
-        status={4}
         title="Quia et aut quia necessitatibus eaque nihil vel odio omnis."
-        updatedAt={2022-06-04T18:36:02.905Z}
       />
       <CardComponent
-        createdAt={2022-02-21T21:28:27.094Z}
-        description="Ea sunt exercitationem. At itaque qui cum ut qui neque quia quia nostrum. Quasi ipsa quaerat. Dolor soluta sed quae ad nemo est."
         id={3731}
         key="3731"
-        reporterEmail="Justen17@hotmail.com"
         reporterName="Justen Hilll"
-        status={4}
         title="Sed sint sapiente tenetur perferendis repellendus eveniet numquam quia totam."
-        updatedAt={2021-07-13T14:55:34.812Z}
       />
       <CardComponent
-        createdAt={2021-06-22T17:54:47.460Z}
-        description="Tenetur tempora quis. Expedita voluptatem occaecati dolore maiores sed ut nobis. Incidunt quasi eveniet nulla. Laborum et est sit occaecati accusantium autem nobis."
         id={18074}
         key="18074"
-        reporterEmail="Celine_Harvey@yahoo.com"
         reporterName="Celine Harvey"
-        status={4}
         title="Magni iusto dolor architecto possimus quod voluptatem odit possimus quia."
-        updatedAt={2021-12-10T22:58:23.311Z}
       />
       <CardComponent
-        createdAt={2021-08-30T18:24:50.730Z}
-        description="Qui non explicabo voluptas sit at enim. Et eum dignissimos ratione voluptatibus optio eligendi. Et provident corrupti magni aut. Ducimus quia esse mollitia autem nihil repellendus velit."
         id={10118}
         key="10118"
-        reporterEmail="Devan_Turcotte43@gmail.com"
         reporterName="Devan Turcotte"
-        status={4}
         title="Aperiam rem veniam optio culpa minima totam sunt possimus soluta."
-        updatedAt={2021-12-22T19:52:02.171Z}
       />
       <CardComponent
-        createdAt={2021-09-03T01:16:36.828Z}
-        description="Tempore similique praesentium earum temporibus a quia. Quam sint et est repellendus corporis expedita beatae excepturi. Autem eum laudantium qui iste perferendis consectetur facere in quis. Sapiente omnis nulla enim dolores sint est ad quaerat minima."
         id={35073}
         key="35073"
-        reporterEmail="Lafayette_Heller@yahoo.com"
         reporterName="Lafayette Heller"
-        status={4}
         title="Velit neque sunt optio officiis sit odit doloremque voluptas et."
-        updatedAt={2022-02-07T07:59:45.399Z}
       />
       <CardComponent
-        createdAt={2022-05-17T03:50:47.435Z}
-        description="Vero temporibus praesentium nulla quibusdam. Rem dignissimos tenetur eum aut corporis animi illo. Impedit deleniti voluptatibus. Unde dolorem minus tempora."
         id={43577}
         key="43577"
-        reporterEmail="Robbie.Bogan97@yahoo.com"
         reporterName="Robbie Bogan"
-        status={4}
         title="Voluptatum harum voluptatem eaque voluptates est qui veritatis occaecati earum."
-        updatedAt={2021-08-27T06:28:53.843Z}
       />
       <CardComponent
-        createdAt={2021-11-29T06:14:30.604Z}
-        description="Quisquam inventore officiis libero. Possimus minima eum est modi. Pariatur distinctio fuga minima ipsum rem nesciunt. Ipsa officiis saepe ab."
         id={61125}
         key="61125"
-        reporterEmail="Sterling86@gmail.com"
         reporterName="Sterling Ratke"
-        status={4}
         title="Et nihil doloremque non officiis totam iure quas aut non."
-        updatedAt={2021-10-20T13:24:11.017Z}
       />
       <CardComponent
-        createdAt={2021-10-27T23:19:03.891Z}
-        description="Non aut reiciendis voluptas qui est magni. Reprehenderit deleniti nobis minima amet. Eos veritatis eaque fugit tempora. Rerum sunt assumenda repellat alias exercitationem eveniet quos sit officiis."
         id={97375}
         key="97375"
-        reporterEmail="Blanche84@yahoo.com"
         reporterName="Blanche Hilpert"
-        status={4}
         title="Architecto numquam natus corrupti inventore repellat rerum architecto ut sint."
-        updatedAt={2022-01-06T17:30:16.132Z}
       />
       <CardComponent
-        createdAt={2021-08-04T09:06:55.563Z}
-        description="Voluptatem velit accusamus omnis beatae sint velit qui tempora rerum. Ut aut odit blanditiis cupiditate dolores maiores et aut itaque. Qui necessitatibus hic sed doloribus consequatur soluta. Aperiam fugiat quia blanditiis est fugiat placeat."
         id={260}
         key="260"
-        reporterEmail="Sydnie76@gmail.com"
         reporterName="Sydnie Tremblay"
-        status={4}
         title="Voluptates et veniam doloremque est labore possimus sed et eum."
-        updatedAt={2021-09-19T09:28:45.497Z}
       />
       <CardComponent
-        createdAt={2022-04-30T15:50:17.302Z}
-        description="Fugit tempore temporibus aliquid expedita fugiat minus. Ab aut molestiae sit ut voluptatem tempore laudantium consequatur molestias. Ducimus illo quia voluptatem sint omnis debitis sunt facilis eum. Aut eligendi quasi aspernatur harum delectus minus aspernatur."
         id={81380}
         key="81380"
-        reporterEmail="Carmen.Bailey14@hotmail.com"
         reporterName="Carmen Bailey"
-        status={4}
         title="Animi labore quaerat hic ad repellat nihil enim eum eos."
-        updatedAt={2022-03-11T15:33:15.367Z}
       />
       <CardComponent
-        createdAt={2021-09-07T18:01:48.126Z}
-        description="Suscipit sapiente beatae aperiam iusto nisi sequi. Et rerum est quis voluptatem harum. Molestias voluptatem corporis. Laborum quia expedita reprehenderit possimus aliquid."
         id={97263}
         key="97263"
-        reporterEmail="Hailee_Mills@yahoo.com"
         reporterName="Hailee Mills"
-        status={4}
         title="Adipisci accusantium quibusdam voluptate delectus eligendi ex blanditiis sequi dolores."
-        updatedAt={2022-05-13T18:36:22.726Z}
       />
       <CardComponent
-        createdAt={2021-08-11T14:54:01.425Z}
-        description="Ab cum doloremque et quisquam consequatur eos ut laudantium. Saepe illo veniam sed aut iste culpa harum facilis. Nihil error cum dolor quam voluptatem deleniti est quia. Autem commodi nostrum error quia neque dolore sint ad voluptatem."
         id={33206}
         key="33206"
-        reporterEmail="Unique_Stanton@yahoo.com"
         reporterName="Unique Stanton"
-        status={4}
         title="Aut vitae facere ipsum facere omnis tempore eum tenetur ea."
-        updatedAt={2021-08-09T10:59:23.054Z}
       />
       <CardComponent
-        createdAt={2021-12-29T12:48:10.809Z}
-        description="Tempora magni blanditiis. Tempora voluptas voluptatem temporibus assumenda veritatis maiores sint possimus. Omnis sit et vero harum neque aut. Distinctio dignissimos qui tempore sit ea qui voluptate esse."
         id={81209}
         key="81209"
-        reporterEmail="Emmett23@yahoo.com"
         reporterName="Emmett Daniel"
-        status={4}
         title="Laboriosam quas ut iusto unde rerum id debitis corrupti ad."
-        updatedAt={2022-03-05T13:26:24.570Z}
       />
       <CardComponent
-        createdAt={2022-05-10T02:22:50.909Z}
-        description="Praesentium et soluta. Sint recusandae incidunt illum laboriosam deserunt quo laborum qui. Sunt eos iste quisquam repudiandae ut. Aut cumque distinctio exercitationem aperiam debitis."
         id={10002}
         key="10002"
-        reporterEmail="Francis_OReilly77@yahoo.com"
         reporterName="Francis O'Reilly"
-        status={4}
         title="Fugit et eum consequatur quia vero voluptas voluptate itaque ea."
-        updatedAt={2022-01-26T09:05:30.210Z}
       />
       <CardComponent
-        createdAt={2022-05-06T16:28:46.993Z}
-        description="Et harum facilis voluptatem quisquam voluptatem molestiae. Excepturi ipsum consequatur eum laborum eos dolores. Dolorem dolor ut est modi quasi. Dolores cumque sit."
         id={43171}
         key="43171"
-        reporterEmail="Toni40@yahoo.com"
         reporterName="Toni Orn"
-        status={4}
         title="Porro voluptas repellat laudantium ipsa deserunt at libero perspiciatis dolor."
-        updatedAt={2021-07-31T07:50:58.811Z}
       />
       <CardComponent
-        createdAt={2021-12-28T11:11:04.015Z}
-        description="Suscipit inventore est soluta. Optio non quibusdam corrupti quam dolor. Fugit suscipit quo quia suscipit accusamus similique sapiente quia. Maxime et id nam ea dignissimos sit."
         id={99011}
         key="99011"
-        reporterEmail="Demetrius_Heller@gmail.com"
         reporterName="Demetrius Heller"
-        status={4}
         title="Atque occaecati vel fugiat excepturi iusto eum autem et quod."
-        updatedAt={2021-11-11T04:30:24.816Z}
       />
       <CardComponent
-        createdAt={2021-08-01T04:52:07.848Z}
-        description="Aut optio qui cum explicabo rerum ut id. Est architecto accusamus est minus. Eos omnis nisi. Cupiditate adipisci numquam."
         id={72303}
         key="72303"
-        reporterEmail="Jewel9@hotmail.com"
         reporterName="Jewel Runolfsdottir"
-        status={4}
         title="Quibusdam quas numquam atque saepe est animi dolores maiores possimus."
-        updatedAt={2021-08-02T06:05:16.157Z}
       />
       <CardComponent
-        createdAt={2021-09-30T23:08:52.307Z}
-        description="Aut delectus et sed error vero sint omnis. Sapiente ullam repudiandae necessitatibus architecto sint quam sed sed reprehenderit. Voluptates inventore est quasi nulla sit culpa et nam. Sit eum quia provident enim id optio laborum doloremque corrupti."
         id={63413}
         key="63413"
-        reporterEmail="Haley13@hotmail.com"
         reporterName="Haley Roob"
-        status={4}
         title="Quaerat laudantium quod molestiae voluptatem quaerat sit porro sed at."
-        updatedAt={2021-08-11T05:12:35.554Z}
       />
       <CardComponent
-        createdAt={2021-07-28T09:55:01.982Z}
-        description="Et ex neque sed eius iusto. Quasi eveniet et harum quia laborum voluptate dolorum dolor. Omnis rerum deserunt placeat necessitatibus vel. Autem aut corporis corporis dolorem aut unde."
         id={70387}
         key="70387"
-        reporterEmail="Kailyn.Wisoky@yahoo.com"
         reporterName="Kailyn Wisoky"
-        status={4}
         title="Quae qui et laudantium sequi dolorum quia fugiat vel totam."
-        updatedAt={2021-06-22T02:12:44.323Z}
       />
       <CardComponent
-        createdAt={2021-11-14T10:04:29.733Z}
-        description="Suscipit incidunt aut qui. Velit reiciendis mollitia vel voluptates odit ea ut. In ducimus optio aut est quis. Ut tempora quibusdam voluptatum fuga aliquid aut facilis nisi."
         id={67822}
         key="67822"
-        reporterEmail="Dedrick.Gleason17@yahoo.com"
         reporterName="Dedrick Gleason"
-        status={4}
         title="Nisi ea dolores impedit voluptatum autem minima sit et non."
-        updatedAt={2021-11-11T18:48:11.151Z}
       />
       <CardComponent
-        createdAt={2022-01-24T00:15:54.687Z}
-        description="Cumque maxime dolore quasi. Voluptatem esse consequuntur enim aut aliquam numquam. Possimus est molestiae ratione doloribus aut molestias nostrum. Perferendis ipsam doloremque."
         id={95255}
         key="95255"
-        reporterEmail="Jared.Friesen@gmail.com"
         reporterName="Jared Friesen"
-        status={4}
         title="Reiciendis ea rerum aut nostrum ipsam dignissimos cumque quia nulla."
-        updatedAt={2022-03-31T07:09:12.619Z}
       />
       <CardComponent
-        createdAt={2022-05-01T23:19:15.521Z}
-        description="Quam a reiciendis ut aut sint nemo asperiores. Earum rem quaerat aliquid dolorem nobis. Exercitationem cupiditate et dolor nihil eos. Est enim est labore quo et et voluptatem autem qui."
         id={11949}
         key="11949"
-        reporterEmail="Leta.Mante25@yahoo.com"
         reporterName="Leta Mante"
-        status={4}
         title="Perferendis optio qui quaerat alias velit voluptatum magni quam non."
-        updatedAt={2022-01-14T22:11:01.438Z}
       />
       <CardComponent
-        createdAt={2021-10-27T05:04:18.062Z}
-        description="Aut dolorem eum. Sunt cum totam nesciunt omnis qui ea eius. Et id et est sit. Voluptatem repellendus quis voluptatem eos accusamus laudantium."
         id={85809}
         key="85809"
-        reporterEmail="Dorris.Conroy@hotmail.com"
         reporterName="Dorris Conroy"
-        status={4}
         title="Vel quo et id ut enim nam rerum quod dignissimos."
-        updatedAt={2021-07-17T23:32:24.217Z}
       />
       <CardComponent
-        createdAt={2021-11-25T07:38:22.735Z}
-        description="Praesentium totam soluta voluptatem voluptas et sit consectetur consequuntur. Sunt eaque nisi corrupti reiciendis reprehenderit ab molestiae autem aspernatur. Quo qui explicabo repudiandae enim quis sed. Pariatur in minus non doloremque omnis dolorum qui autem qui."
         id={53506}
         key="53506"
-        reporterEmail="Braeden.Hand@gmail.com"
         reporterName="Braeden Hand"
-        status={4}
         title="Odio odit dolores ea omnis amet corrupti dolorem est rem."
-        updatedAt={2021-06-25T07:14:32.555Z}
       />
       <CardComponent
-        createdAt={2022-02-22T04:47:54.410Z}
-        description="Omnis eligendi earum error magni fugiat. Odio harum laboriosam reiciendis saepe natus doloribus itaque. Et quos quas minus ut. Pariatur quasi totam."
         id={52220}
         key="52220"
-        reporterEmail="Gerhard.Hudson@yahoo.com"
         reporterName="Gerhard Hudson"
-        status={4}
         title="Recusandae ut dolor aspernatur reprehenderit ad dolore deleniti sapiente magni."
-        updatedAt={2021-12-21T23:54:24.506Z}
       />
       <CardComponent
-        createdAt={2021-07-31T03:56:10.667Z}
-        description="Assumenda veritatis non rem incidunt ut corrupti perferendis sint porro. Laboriosam excepturi illum minus omnis eos natus nam eum. Dolorum maiores vel. Ipsa maxime aperiam."
         id={6926}
         key="6926"
-        reporterEmail="Christop44@yahoo.com"
         reporterName="Christop Schroeder"
-        status={4}
         title="Et numquam ipsam omnis beatae corrupti neque non deleniti qui."
-        updatedAt={2021-08-13T09:34:14.403Z}
       />
       <CardComponent
-        createdAt={2022-04-24T03:35:03.298Z}
-        description="Qui omnis sequi. Enim vel eos quos sequi magnam debitis. Consequatur architecto doloremque. Non omnis nemo unde commodi."
         id={19665}
         key="19665"
-        reporterEmail="Rico79@hotmail.com"
         reporterName="Rico Smitham"
-        status={4}
         title="Et eius quis sequi quis eos deleniti facilis tempore aut."
-        updatedAt={2022-05-07T00:55:55.669Z}
       />
       <CardComponent
-        createdAt={2021-06-18T22:12:37.880Z}
-        description="Molestiae ad placeat possimus maiores veritatis id. Fugiat et consequuntur. Accusantium est ut voluptas non enim neque. Repellat libero sequi modi eos neque omnis iusto."
         id={28460}
         key="28460"
-        reporterEmail="Elijah30@yahoo.com"
         reporterName="Elijah Stokes"
-        status={4}
         title="Incidunt expedita ab commodi atque quia asperiores rem et qui."
-        updatedAt={2021-06-30T03:30:24.715Z}
       />
       <CardComponent
-        createdAt={2021-06-26T22:18:36.854Z}
-        description="Magnam eveniet et iusto sed corrupti. Voluptatem voluptate tenetur labore labore fugiat modi. Et quam qui aut sunt a. Voluptatibus est est blanditiis."
         id={60242}
         key="60242"
-        reporterEmail="Eleanore_Altenwerth0@yahoo.com"
         reporterName="Eleanore Altenwerth"
-        status={4}
         title="Molestias eaque cupiditate reiciendis facilis adipisci distinctio libero dolore iusto."
-        updatedAt={2022-02-22T08:05:45.656Z}
       />
       <CardComponent
-        createdAt={2021-09-29T18:54:25.669Z}
-        description="Sequi eum voluptatem quidem vitae tempore. Aliquam excepturi ut nihil repellat beatae sint ducimus fuga. Mollitia nisi ullam repellat quas et officia. Aut inventore beatae blanditiis laudantium magni perspiciatis eos voluptas."
         id={75815}
         key="75815"
-        reporterEmail="Marlene.DAmore99@yahoo.com"
         reporterName="Marlene D'Amore"
-        status={4}
         title="Doloremque tenetur ex et at quis quae aut fugit non."
-        updatedAt={2021-09-01T23:02:36.103Z}
       />
       <CardComponent
-        createdAt={2022-02-13T23:48:33.148Z}
-        description="Maxime aut quasi dolor sequi omnis. Vero saepe nisi at quo voluptates delectus id. Sed veniam quia iusto eum sunt veritatis. Ipsam et quibusdam sequi sed rerum id non porro."
         id={43236}
         key="43236"
-        reporterEmail="Hal81@hotmail.com"
         reporterName="Hal Mann"
-        status={4}
         title="Et molestiae aut eveniet esse repellendus dolores quia praesentium et."
-        updatedAt={2022-04-14T01:45:40.145Z}
       />
       <CardComponent
-        createdAt={2021-12-08T15:07:38.872Z}
-        description="Et voluptatem facilis. Aut esse illum expedita dicta nulla est quo dolores vel. Quis qui qui fugiat illo eveniet aut accusamus omnis. Explicabo eaque deserunt adipisci accusamus."
         id={65031}
         key="65031"
-        reporterEmail="Marie_Kshlerin69@hotmail.com"
         reporterName="Marie Kshlerin"
-        status={4}
         title="Sint magnam consectetur esse exercitationem exercitationem aspernatur qui fugiat odit."
-        updatedAt={2021-09-28T06:57:45.329Z}
       />
       <CardComponent
-        createdAt={2021-10-12T13:01:22.527Z}
-        description="Optio est qui beatae aliquid perspiciatis doloribus ratione omnis. Unde ea in sed et iusto ratione aut. Cupiditate ipsa eveniet consectetur saepe est. Distinctio enim aspernatur in quo consequatur eius."
         id={45627}
         key="45627"
-        reporterEmail="Erika_Smitham@yahoo.com"
         reporterName="Erika Smitham"
-        status={4}
         title="Numquam blanditiis corrupti pariatur necessitatibus atque nemo mollitia consequatur quis."
-        updatedAt={2022-02-20T11:03:28.938Z}
       />
       <CardComponent
-        createdAt={2022-04-08T07:53:41.904Z}
-        description="Consequatur quam animi et. Reiciendis fuga fuga dignissimos possimus vitae qui maxime provident impedit. Est nemo et explicabo. Quas itaque excepturi quia est cum dolor molestiae rerum."
         id={17443}
         key="17443"
-        reporterEmail="Eldora86@hotmail.com"
         reporterName="Eldora Schultz"
-        status={4}
         title="Deserunt vitae et totam est et rerum ut ut nesciunt."
-        updatedAt={2021-07-10T19:07:50.442Z}
       />
       <CardComponent
-        createdAt={2022-01-08T06:34:20.009Z}
-        description="Distinctio occaecati recusandae voluptatem accusantium id est. Et eum ullam veniam aut aut. Qui ad quos culpa sit saepe rerum. Voluptates est et facilis."
         id={76669}
         key="76669"
-        reporterEmail="Adrien65@hotmail.com"
         reporterName="Adrien Reynolds"
-        status={4}
         title="Et eum ratione dolores dignissimos qui in et atque sit."
-        updatedAt={2021-11-29T08:13:01.563Z}
       />
       <CardComponent
-        createdAt={2022-05-26T03:52:28.644Z}
-        description="Ducimus et dolorem quas. Non provident veritatis eligendi dolor nostrum enim reiciendis qui nemo. Sed illo velit atque deleniti reprehenderit. Quia inventore accusamus laudantium accusantium officia dolore."
         id={86169}
         key="86169"
-        reporterEmail="Brycen59@hotmail.com"
         reporterName="Brycen Hintz"
-        status={4}
         title="Et odit repudiandae est quo libero officiis consequatur qui dolorem."
-        updatedAt={2021-07-31T02:47:27.461Z}
       />
     </div>
   </div>

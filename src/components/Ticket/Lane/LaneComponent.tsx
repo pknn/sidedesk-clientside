@@ -44,7 +44,12 @@ export const LaneComponent = ({
       </div>
       <div className="p-2 pt-0">
         {tickets.map((ticket) => (
-          <Card key={ticket.id} {...ticket} />
+          <Card
+            key={ticket.id}
+            id={ticket.id}
+            title={ticket.title}
+            reporterName={ticket.reporterName}
+          />
         ))}
       </div>
     </div>
