@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Metadata } from 'app/types/Metadata'
 
 const initialState: Metadata = {
-  version: import.meta.env.VITE_CS_VERSION,
+  version:
+    process.env.NODE_ENV === 'test' ? 'test' : import.meta.env.VITE_CS_VERSION,
 }
 
 export const MetadataSlice = createSlice({

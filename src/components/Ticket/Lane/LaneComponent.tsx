@@ -1,4 +1,5 @@
 import React from 'react'
+import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Ticket, TicketStatus } from 'app/types/Ticket'
 import { Card } from 'app/components/Ticket/Card'
@@ -8,6 +9,13 @@ interface DataProps {
   tickets: Ticket[]
   laneStatus: TicketStatus
 }
+
+interface DroppableProps {
+  droppableProvided: DroppableProvided
+  droppableStateSnapshot: DroppableStateSnapshot
+}
+
+type ComponentProps = DataProps & DroppableProps
 
 const getStatusLaneDotColor = (laneStatus: TicketStatus) => {
   switch (laneStatus) {
@@ -30,27 +38,75 @@ const getStatusLaneDot = (laneStatus: TicketStatus) => {
   return <div className={className} />
 }
 
+const getLaneColor = (isDraggingOver: boolean, isDraggingFrom: boolean) => {
+  let color = 'bg-gray-50'
+  if (isDraggingOver) {
+    if (isDraggingFrom) {
+      color = 'bg-blue-100'
+    } else {
+      color = 'bg-green-100'
+    }
+  } else if (isDraggingFrom) {
+    color = 'bg-red-100'
+  }
+  return color
+}
+
+const getLaneHeaderClassNames = (
+  isDraggingOver: boolean,
+  isDraggingFrom: boolean,
+) =>
+  [
+    'flex items-center sticky top-10 px-2 py-4 transition-colors duration-150',
+    getLaneColor(isDraggingOver, isDraggingFrom),
+  ].join(' ')
+
+const getLaneClassNames = (
+  isDraggingOver: boolean,
+  isDraggingFrom: boolean,
+) => {
+  return [
+    'rounded shadow-sm h-full relative transition-colors duration-150',
+    getLaneColor(isDraggingOver, isDraggingFrom),
+  ].join(' ')
+}
+
 export const LaneComponent = ({
   tickets,
   laneStatus,
-}: DataProps): JSX.Element => (
+  droppableProvided,
+  droppableStateSnapshot,
+}: ComponentProps): JSX.Element => (
   <Basis>
-    <div className="bg-gray-50 rounded shadow-sm h-full relative">
-      <div className="flex items-center sticky top-0 bg-gray-50 px-2 py-4">
+    <div
+      ref={droppableProvided.innerRef}
+      className={getLaneClassNames(
+        droppableStateSnapshot.isDraggingOver,
+        !!droppableStateSnapshot.draggingFromThisWith,
+      )}
+    >
+      <div
+        className={getLaneHeaderClassNames(
+          droppableStateSnapshot.isDraggingOver,
+          !!droppableStateSnapshot.draggingFromThisWith,
+        )}
+      >
         {getStatusLaneDot(laneStatus)}
         <span className="font-semibold text-gray-500 text-sm italic">
           {TicketStatus[laneStatus].toUpperCase()}
         </span>
       </div>
       <div className="p-2 pt-0">
-        {tickets.map((ticket) => (
+        {tickets.map((ticket, index) => (
           <Card
             key={ticket.id}
+            index={index}
             id={ticket.id}
             title={ticket.title}
             reporterName={ticket.reporterName}
           />
         ))}
+        {droppableProvided.placeholder}
       </div>
     </div>
   </Basis>
