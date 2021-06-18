@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN yarn
 COPY . .
+RUN --mount=type=secret,id=env_prod cp /run/secrets/env_prod .env.production
 RUN yarn build
 
 FROM nginx:stable-alpine as production-stage
