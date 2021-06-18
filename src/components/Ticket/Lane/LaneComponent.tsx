@@ -38,17 +38,59 @@ const getStatusLaneDot = (laneStatus: TicketStatus) => {
   return <div className={className} />
 }
 
+const getLaneColor = (isDraggingOver: boolean, isDraggingFrom: boolean) => {
+  let color = 'bg-gray-50'
+  if (isDraggingOver) {
+    if (isDraggingFrom) {
+      color = 'bg-blue-100'
+    } else {
+      color = 'bg-green-100'
+    }
+  } else if (isDraggingFrom) {
+    color = 'bg-red-100'
+  }
+  return color
+}
+
+const getLaneHeaderClassNames = (
+  isDraggingOver: boolean,
+  isDraggingFrom: boolean,
+) =>
+  [
+    'flex items-center sticky top-0 px-2 py-4 transition-colors duration-150',
+    getLaneColor(isDraggingOver, isDraggingFrom),
+  ].join(' ')
+
+const getLaneClassNames = (
+  isDraggingOver: boolean,
+  isDraggingFrom: boolean,
+) => {
+  return [
+    'rounded shadow-sm h-full relative transition-colors duration-150',
+    getLaneColor(isDraggingOver, isDraggingFrom),
+  ].join(' ')
+}
+
 export const LaneComponent = ({
   tickets,
   laneStatus,
   droppableProvided,
+  droppableStateSnapshot,
 }: ComponentProps): JSX.Element => (
   <Basis>
     <div
       ref={droppableProvided.innerRef}
-      className="bg-gray-50 rounded shadow-sm h-full relative"
+      className={getLaneClassNames(
+        droppableStateSnapshot.isDraggingOver,
+        !!droppableStateSnapshot.draggingFromThisWith,
+      )}
     >
-      <div className="flex items-center sticky top-0 bg-gray-50 px-2 py-4">
+      <div
+        className={getLaneHeaderClassNames(
+          droppableStateSnapshot.isDraggingOver,
+          !!droppableStateSnapshot.draggingFromThisWith,
+        )}
+      >
         {getStatusLaneDot(laneStatus)}
         <span className="font-semibold text-gray-500 text-sm italic">
           {TicketStatus[laneStatus].toUpperCase()}
