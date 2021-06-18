@@ -1,4 +1,5 @@
 import React from 'react'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 import { Lane } from 'app/components/Ticket/Lane'
 import { Ticket, TicketStatus } from 'app/types/Ticket'
@@ -17,6 +18,17 @@ const toLaneComponent = (tickets: Ticket[]) =>
     />
   ))
 
-export const BoardComponent = ({ tickets }: DataProps): JSX.Element => (
-  <div className="w-full flex justify-between">{toLaneComponent(tickets)}</div>
-)
+export const BoardComponent = ({ tickets }: DataProps): JSX.Element => {
+  const handleDragEnd = (result: DropResult) => {
+    const { source, destination } = result
+    console.log(source, destination)
+  }
+
+  return (
+    <div className="w-full flex justify-between">
+      <DragDropContext onDragEnd={handleDragEnd}>
+        {toLaneComponent(tickets)}
+      </DragDropContext>
+    </div>
+  )
+}
