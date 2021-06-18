@@ -31,15 +31,16 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Prepare Environment
+      run: echo $ENV_PROD > .env.prod
+      env:
+        ENV_PROD: ${{ secrets.ENV_PROD }}
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v2
       with:
         push: true
         tags: pknndev/sidedesk-clientside:${{ steps.package-version.outputs.current-version}}
-        build-args: |
-          VITE_SS_URL=${{ secrets.VITE_SS_URL }}
-          VITE_CS_VERSION=${{ steps.package-version.outputs.current-version }}
   deploy:
     runs-on: ubuntu-latest
     needs: build
