@@ -43,9 +43,12 @@ export const LaneComponent = ({
 }: ComponentProps): JSX.Element => (
   <Basis>
     <Droppable droppableId={TicketStatus[laneStatus]}>
-      {(provided: DroppableProvided, snapshot: DroppableStateSnapshot) => (
+      {(
+        droppableProvided: DroppableProvided,
+        droppableStateSnapshot: DroppableStateSnapshot,
+      ) => (
         <div
-          ref={provided.innerRef}
+          ref={droppableProvided.innerRef}
           className="bg-gray-50 rounded shadow-sm h-full relative"
         >
           <div className="flex items-center sticky top-0 bg-gray-50 px-2 py-4">
@@ -55,14 +58,16 @@ export const LaneComponent = ({
             </span>
           </div>
           <div className="p-2 pt-0">
-            {tickets.map((ticket) => (
+            {tickets.map((ticket, index) => (
               <Card
                 key={ticket.id}
+                index={index}
                 id={ticket.id}
                 title={ticket.title}
                 reporterName={ticket.reporterName}
               />
             ))}
+            {droppableProvided.placeholder}
           </div>
         </div>
       )}
