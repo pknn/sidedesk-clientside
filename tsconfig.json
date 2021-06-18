@@ -18,7 +18,12 @@
     "baseUrl": ".",
     "paths": {
       "app/*": ["./src/*"]
-    }
+    },
+    "types": [
+      "jest",
+      "node",
+      "vite/client"
+    ]
   },
   "include": ["./src"]
 }

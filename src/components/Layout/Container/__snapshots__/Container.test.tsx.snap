@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Container /> should render correctly 1`] = `
+<div
+  className="container py-4"
+>
+  <div
+    id="mock-child"
+  >
+    Hello
+  </div>
+</div>
+`;
