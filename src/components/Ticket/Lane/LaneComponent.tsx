@@ -57,7 +57,7 @@ const getLaneHeaderClassNames = (
   isDraggingFrom: boolean,
 ) =>
   [
-    'flex items-center sticky top-0 px-2 py-4 transition-colors duration-150',
+    'flex items-center sticky top-10 px-2 py-4 transition-colors duration-150',
     getLaneColor(isDraggingOver, isDraggingFrom),
   ].join(' ')
 
