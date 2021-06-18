@@ -16,5 +16,22 @@ export const Card = (): JSX.Element => {
     updatedAt: new Date(),
   }
 
-  return <CardComponent {...ticketInfo} />
+  const ticketInfo2: Ticket = {
+    id: 2,
+    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    reporterName: 'John Bro',
+    reporterEmail: 'john.bro@gmail.com',
+    status: TicketStatus.Pending,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }
+
+  return (
+    <>
+      <CardComponent {...ticketInfo} />
+      <CardComponent {...ticketInfo2} />
+    </>
+  )
 }
