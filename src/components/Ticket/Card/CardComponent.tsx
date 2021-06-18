@@ -21,7 +21,6 @@ export const CardComponent = ({
   title,
   reporterName,
   draggableProvided,
-  draggableStateSnapshot,
 }: ComponentProps): JSX.Element => (
   <div
     ref={draggableProvided.innerRef}

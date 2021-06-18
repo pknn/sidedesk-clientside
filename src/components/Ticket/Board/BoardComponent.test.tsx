@@ -3,9 +3,9 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 
 import { getMockTickets } from 'app/helpers/mockTicket'
+import { Lane } from 'app/components/Ticket/Lane'
 
 import { BoardComponent } from './BoardComponent'
-import { LaneComponent } from '../Lane/LaneComponent'
 
 describe('<BoardComponent />', () => {
   it('should render 4 lanes with correct status', () => {
@@ -14,7 +14,7 @@ describe('<BoardComponent />', () => {
       <BoardComponent tickets={mockTickets} />,
     )
 
-    expect(shallowMountedComponent.find(LaneComponent)).toHaveLength(4)
+    expect(shallowMountedComponent.find(Lane)).toHaveLength(4)
   })
 
   it('should render correctly', () => {

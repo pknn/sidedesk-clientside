@@ -42,7 +42,6 @@ export const LaneComponent = ({
   tickets,
   laneStatus,
   droppableProvided,
-  droppableStateSnapshot,
 }: ComponentProps): JSX.Element => (
   <Basis>
     <div

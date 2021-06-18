@@ -3,12 +3,5 @@ module.exports = {
   moduleNameMapper: {
     'app/(.*)': '<rootDir>/src/$1',
   },
-  transform: {
-    '.(ts|tsx)': 'ts-jest',
-  },
-  globals: {
-    'ts-jest': {
-      compiler: 'ttypescript',
-    },
-  },
+  testEnvironment: 'jsdom',
 }

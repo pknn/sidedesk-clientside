@@ -3,35 +3,22 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 
 import { getMockTickets } from 'app/helpers/mockTicket'
-import { LaneComponent } from './LaneComponent'
 import { TicketStatus } from 'app/types/Ticket'
-import { CardComponent } from 'app/components/Ticket/Card/CardComponent'
+
+import { Lane } from '.'
+
+const setupLaneComponent = () => {
+  const mockTickets = getMockTickets(50).filter(
+    (ticket) => ticket.status === TicketStatus.Accepted,
+  )
+  return shallow(
+    <Lane tickets={mockTickets} laneStatus={TicketStatus.Accepted} />,
+  )
+}
 
 describe('<LaneComponent />', () => {
-  it('should get lane with specified status correctly', () => {
-    const mockTickets = getMockTickets(50).filter(
-      (ticket) => ticket.status === TicketStatus.Accepted,
-    )
-    const shallowMountedComponent = shallow(
-      <LaneComponent
-        tickets={mockTickets}
-        laneStatus={TicketStatus.Accepted}
-      />,
-    )
-
-    expect(shallowMountedComponent.exists(CardComponent)).toBe(true)
-    expect(shallowMountedComponent.find(CardComponent)).toHaveLength(
-      mockTickets.length,
-    )
-  })
   it('should render correctly', () => {
-    const mockTickets = getMockTickets(50, TicketStatus.Rejected)
-    const shallowMountedComponent = shallow(
-      <LaneComponent
-        tickets={mockTickets}
-        laneStatus={TicketStatus.Rejected}
-      />,
-    )
+    const shallowMountedComponent = setupLaneComponent()
 
     expect(toJson(shallowMountedComponent)).toMatchSnapshot()
   })
