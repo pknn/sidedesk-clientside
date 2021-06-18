@@ -12,13 +12,27 @@ const initialState: BoardState = {
   rejectedTickets: getTickets(5, TicketStatus.Rejected),
 }
 
-const getReorderedTicket = (tickets: Ticket[], from: number, to: number) => {
+const getReorderedTicketList = (
+  tickets: Ticket[],
+  from: number,
+  to: number,
+) => {
   const result = [...tickets]
   const [movingTicket] = result.splice(from, 1)
   result.splice(to, 0, movingTicket)
 
   return result
 }
+
+const getMovedTicketLists = (
+  source: Ticket[],
+  sink: Ticket[],
+  from: number,
+  to: number,
+): [Ticket[], Ticket[]] => [
+  source.filter((_, index) => index !== from),
+  sink.slice(0, to).concat(source[from]).concat(sink.slice(to)),
+]
 
 const BoardSlice = createSlice({
   name: 'board',
@@ -28,12 +42,24 @@ const BoardSlice = createSlice({
       const { payload } = action
       if (payload.from.statusLane === payload.to.statusLane) {
         const key = getKeyFromStatus(payload.from.statusLane)
-        state[key] = getReorderedTicket(
+        state[key] = getReorderedTicketList(
           state[key],
           payload.from.index,
           payload.to.index,
         )
       } else {
+        const sourceKey = getKeyFromStatus(payload.from.statusLane)
+        const sinkKey = getKeyFromStatus(payload.to.statusLane)
+
+        const [source, sink] = getMovedTicketLists(
+          state[sourceKey],
+          state[sinkKey],
+          payload.from.index,
+          payload.to.index,
+        )
+
+        state[sourceKey] = source
+        state[sinkKey] = sink
       }
     },
   },
