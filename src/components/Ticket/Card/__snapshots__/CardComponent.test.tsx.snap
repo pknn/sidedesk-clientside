@@ -8,12 +8,12 @@ exports[`<CardComponent /> should render correctly 1`] = `
     className="text-xs text-gray-400 flex items-center"
   >
     #
-    8184
+    7532
   </div>
   <div
     className="flex-1 text-sm"
   >
-    Cum rerum dicta qui et ipsum facilis adipisci accusantium aut.
+    Repudiandae accusantium et nihil aut in animi numquam quis laborum.
   </div>
   <div
     className="mt-2 flex items-baseline"
@@ -52,7 +52,7 @@ exports[`<CardComponent /> should render correctly 1`] = `
     <span
       className="align-baseline text-xs"
     >
-      Junior Bashirian
+      Jalen Rutherford
     </span>
   </div>
 </div>

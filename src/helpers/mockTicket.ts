@@ -10,6 +10,7 @@ const ticketStatusOptions: TicketStatus[] = [
 ]
 
 export const getMockTicket = (): Ticket => {
+  faker.seed(96421)
   const firstName = faker.name.firstName()
   const lastName = faker.name.lastName()
   const fullName = `${firstName} ${lastName}`
