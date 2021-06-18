@@ -8,7 +8,9 @@ export const App = (): JSX.Element => (
   <PageWrapper>
     <Container>
       <Header />
-      <Card />
+      <div className="w-1/4">
+        <Card />
+      </div>
     </Container>
   </PageWrapper>
 )
