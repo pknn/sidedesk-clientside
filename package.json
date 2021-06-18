@@ -2,7 +2,7 @@
   "version": "0.0.8",
   "scripts": {
     "dev": "vite",
-    "build": "ls -al && cat .env.production && tsc && vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "echo 'Currently no test'"
   },
