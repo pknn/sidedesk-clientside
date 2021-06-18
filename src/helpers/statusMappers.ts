@@ -1,7 +1,7 @@
-import { Board } from 'app/types/Board'
+import { BoardState } from 'app/types/Board'
 import { TicketStatus } from 'app/types/Ticket'
 
-export type BoardTypeKeys = keyof Board
+export type BoardTypeKeys = keyof BoardState
 
 const statusKeyMap: Record<TicketStatus, BoardTypeKeys> = {
   [TicketStatus.Pending]: 'pendingTickets',
