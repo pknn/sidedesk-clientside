@@ -1,5 +1,8 @@
 import { Ticket } from 'app/types/Ticket'
 
 export interface Board {
-  tickets: Ticket[]
+  pendingTickets: Ticket[]
+  acceptedTickets: Ticket[]
+  resolvedTickets: Ticket[]
+  rejectedTickets: Ticket[]
 }

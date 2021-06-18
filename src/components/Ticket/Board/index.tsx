@@ -5,12 +5,18 @@ import { Ticket } from 'app/types/Ticket'
 
 import { BoardComponent } from './BoardComponent'
 
-interface StateProps {
-  tickets: Ticket[]
+export interface StateProps {
+  pendingTickets: Ticket[]
+  acceptedTickets: Ticket[]
+  resolvedTickets: Ticket[]
+  rejectedTickets: Ticket[]
 }
 
 const mapStateToProps = (applicationState: ApplicationState): StateProps => ({
-  tickets: applicationState.board.tickets,
+  pendingTickets: applicationState.board.pendingTickets,
+  acceptedTickets: applicationState.board.acceptedTickets,
+  resolvedTickets: applicationState.board.resolvedTickets,
+  rejectedTickets: applicationState.board.rejectedTickets,
 })
 
 export const Board = connect(mapStateToProps)(BoardComponent)

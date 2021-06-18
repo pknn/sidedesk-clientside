@@ -53,3 +53,13 @@ export const getMockTickets = (n: number, status?: TicketStatus): Ticket[] => {
   }
   return tickets
 }
+
+export const getTickets = (n: number, status: TicketStatus): Ticket[] => {
+  const tickets: Ticket[] = []
+  for (let i = 0; i < n; i += 1) {
+    const fa = i % 3 == 0
+    const fb = i % 3 == 1
+    tickets.push(getFakeTicket(status, fa ? 0 : fb ? 1 : 2))
+  }
+  return tickets
+}
