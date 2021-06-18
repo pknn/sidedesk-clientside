@@ -2,7 +2,7 @@
 
 exports[`<PageWrapper /> should render correctly 1`] = `
 <div
-  className="bg-gray-50 relative h-full"
+  className="bg-gray-200 relative h-full"
 >
   <div
     id="mock-child"

@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface PrimitiveProps {
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }
 
 type ContainerProps = PrimitiveProps
