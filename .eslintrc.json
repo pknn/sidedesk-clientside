@@ -21,6 +21,14 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "react/prop-types": [
+      2,
+      {
+        "ignore": [
+          "children"
+        ]
+      }
+    ]
   }
 }

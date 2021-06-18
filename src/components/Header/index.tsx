@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Version } from 'app/types/Metadata'
 import { ApplicationState } from 'app/types/Store'
 
-import { VersionComponent } from './VersionComponent'
+import { HeaderComponent } from './HeaderComponent'
 
 interface StateProps {
   version: Version
@@ -13,4 +13,4 @@ const mapStateToProps = (applicationState: ApplicationState): StateProps => ({
   version: applicationState.metadata.version,
 })
 
-export default connect(mapStateToProps)(VersionComponent)
+export const Header = connect(mapStateToProps)(HeaderComponent)

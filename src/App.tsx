@@ -1,9 +1,12 @@
 import React from 'react'
 
-import Version from 'app/components/Version'
+import { PageWrapper, Container } from './components/Layout'
+import { Header } from 'app/components/Header'
 
 export const App = (): JSX.Element => (
-  <div>
-    <Version />
-  </div>
+  <PageWrapper>
+    <Container>
+      <Header />
+    </Container>
+  </PageWrapper>
 )
