@@ -8,7 +8,13 @@ import { getMockTicket } from 'app/helpers/mockTicket'
 describe('<CardComponent />', () => {
   it('should render correctly', () => {
     const mockTicket = getMockTicket()
-    const shallowMountedComponent = shallow(<CardComponent {...mockTicket} />)
+    const shallowMountedComponent = shallow(
+      <CardComponent
+        id={mockTicket.id}
+        title={mockTicket.title}
+        reporterName={mockTicket.reporterName}
+      />,
+    )
 
     expect(toJson(shallowMountedComponent)).toMatchSnapshot()
   })
