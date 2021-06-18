@@ -1,8 +1,8 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "ls && tsc && vite build",
     "serve": "vite preview",
     "test": "echo 'Currently no test'"
   },
