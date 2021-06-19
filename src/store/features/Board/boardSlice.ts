@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { getTickets } from 'app/helpers/mockTicket'
-import { getKeyFromStatus } from 'app/helpers/statusMappers'
-import { BoardState, MoveActionPayload } from 'app/types/Board'
+import { getKeyFromString } from 'app/helpers/statusMappers'
+import {
+  BoardState,
+  MoveCrossLaneActionPayload,
+  MoveInLaneActionPayload,
+} from 'app/types/Board'
 import { Ticket, TicketStatus } from 'app/types/Ticket'
 
 const initialState: BoardState = {
@@ -38,29 +42,29 @@ const BoardSlice = createSlice({
   name: 'board',
   initialState,
   reducers: {
-    move: (state: BoardState, action: PayloadAction<MoveActionPayload>) => {
-      const { payload } = action
-      if (payload.from.statusLane === payload.to.statusLane) {
-        const key = getKeyFromStatus(payload.from.statusLane)
-        state[key] = getReorderedTicketList(
-          state[key],
-          payload.from.index,
-          payload.to.index,
-        )
-      } else {
-        const sourceKey = getKeyFromStatus(payload.from.statusLane)
-        const sinkKey = getKeyFromStatus(payload.to.statusLane)
+    moveInLane: (
+      state: BoardState,
+      { payload }: PayloadAction<MoveInLaneActionPayload>,
+    ) => {
+      const key = getKeyFromString(payload.laneId)
+      state[key] = getReorderedTicketList(state[key], payload.from, payload.to)
+    },
+    moveCrossLane: (
+      state: BoardState,
+      { payload }: PayloadAction<MoveCrossLaneActionPayload>,
+    ) => {
+      const sourceKey = getKeyFromString(payload.from.laneId)
+      const sinkKey = getKeyFromString(payload.to.laneId)
 
-        const [source, sink] = getMovedTicketLists(
-          state[sourceKey],
-          state[sinkKey],
-          payload.from.index,
-          payload.to.index,
-        )
+      const [updatedSource, updatedSink] = getMovedTicketLists(
+        state[sourceKey],
+        state[sinkKey],
+        payload.from.index,
+        payload.to.index,
+      )
 
-        state[sourceKey] = source
-        state[sinkKey] = sink
-      }
+      state[sourceKey] = updatedSource
+      state[sinkKey] = updatedSink
     },
   },
 })
