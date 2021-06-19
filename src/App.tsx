@@ -10,7 +10,7 @@ export const App = (): JSX.Element => {
     <PageWrapper>
       <Stage
         shouldShowStage={shouldShowStage}
-        onClick={() => console.log('should abort')}
+        onClick={() => setShouldShowStage(false)}
       >
         <div className="bg-white w-10/12 h-96 absolute inset-0 m-auto">Hi</div>
       </Stage>
