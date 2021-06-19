@@ -8,7 +8,10 @@ export const App = (): JSX.Element => {
   const [shouldShowStage, setShouldShowStage] = useState(false)
   return (
     <PageWrapper>
-      <Stage onClick={() => console.log('should abort')}>
+      <Stage
+        shouldShowStage={shouldShowStage}
+        onClick={() => console.log('should abort')}
+      >
         <div className="bg-white w-10/12 h-96 absolute inset-0 m-auto">Hi</div>
       </Stage>
       <Container>
