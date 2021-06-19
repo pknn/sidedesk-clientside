@@ -5,17 +5,28 @@ interface PrimitiveProps {
   children: Children
 }
 
+interface DataProps {
+  shouldShowStage: boolean
+}
+
 interface ActionProps {
   onClick: VoidFunction
 }
 
-type ComponentProps = PrimitiveProps & ActionProps
+type ComponentProps = PrimitiveProps & DataProps & ActionProps
 
-export const Stage = ({ children, onClick }: ComponentProps) => (
-  <div
-    className="z-40 absolute bg-gray-700 bg-opacity-80 inset-0 m-auto"
-    onClick={onClick}
-  >
+const getStageClassNames = (shouldShowStage: boolean) =>
+  [
+    'z-40 absolute bg-gray-700 bg-opacity-80 inset-0 m-auto',
+    shouldShowStage ? 'block' : 'hidden',
+  ].join(' ')
+
+export const Stage = ({
+  children,
+  shouldShowStage,
+  onClick,
+}: ComponentProps): JSX.Element => (
+  <div className={getStageClassNames(shouldShowStage)} onClick={onClick}>
     {children}
   </div>
 )

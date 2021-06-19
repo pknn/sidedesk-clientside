@@ -21,7 +21,7 @@ const getClassName = (shouldShowAddButton: boolean) =>
 export const AddItemButton = ({
   shouldShowAddButton,
   onClick,
-}: ComponentProps) => (
+}: ComponentProps): JSX.Element => (
   <button className={getClassName(shouldShowAddButton)} onClick={onClick}>
     {shouldShowAddButton && <Icon icon={faPlus} size="xs" className="mr-1" />}
     <span>Add item</span>
