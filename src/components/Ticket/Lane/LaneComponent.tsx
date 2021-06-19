@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Ticket, TicketStatus } from 'app/types/Ticket'
@@ -24,17 +24,22 @@ export const LaneComponent = ({
   laneStatus,
   droppableProvided,
   droppableStateSnapshot,
-}: ComponentProps): JSX.Element => (
-  <LaneContainer
-    droppableProvided={droppableProvided}
-    droppableStateSnapshot={droppableStateSnapshot}
-  >
-    <LaneHeader
-      laneStatus={laneStatus}
-      isDraggingOver={droppableStateSnapshot.isDraggingOver}
-      isDraggingFrom={!!droppableStateSnapshot.draggingFromThisWith}
-    />
-    <LaneContent tickets={tickets} droppableProvided={droppableProvided} />
-    <Add />
-  </LaneContainer>
-)
+}: ComponentProps): JSX.Element => {
+  const [isMouseOver, setIsMouseOver] = useState(false)
+  return (
+    <LaneContainer
+      droppableProvided={droppableProvided}
+      droppableStateSnapshot={droppableStateSnapshot}
+      onMouseOver={() => setIsMouseOver(true)}
+      onMouseLeave={() => setIsMouseOver(false)}
+    >
+      <LaneHeader
+        laneStatus={laneStatus}
+        isDraggingOver={droppableStateSnapshot.isDraggingOver}
+        isDraggingFrom={!!droppableStateSnapshot.draggingFromThisWith}
+      />
+      <LaneContent tickets={tickets} droppableProvided={droppableProvided} />
+      <Add shouldShowAddButton={isMouseOver} />
+    </LaneContainer>
+  )
+}

@@ -13,7 +13,12 @@ interface DroppableProps {
   droppableStateSnapshot: DroppableStateSnapshot
 }
 
-type ComponentProps = PrimitiveProps & DroppableProps
+interface ActionProps {
+  onMouseOver: () => void
+  onMouseLeave: () => void
+}
+
+type ComponentProps = PrimitiveProps & DroppableProps & ActionProps
 
 const getLaneClassNames = (
   isDraggingOver: boolean,
@@ -39,8 +44,10 @@ export const LaneContainer = ({
   children,
   droppableProvided,
   droppableStateSnapshot,
+  onMouseOver,
+  onMouseLeave,
 }: ComponentProps): JSX.Element => (
-  <Basis>
+  <Basis onMouseOverCapture={onMouseOver} onMouseLeave={onMouseLeave}>
     <div
       ref={droppableProvided.innerRef}
       className={getLaneClassNames(
