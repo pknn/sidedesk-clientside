@@ -1,5 +1,6 @@
 export type Version = string
 
-export interface Metadata {
+export interface MetadataState {
   version: Version
+  shouldShowStageComponent: boolean
 }

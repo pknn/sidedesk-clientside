@@ -4,6 +4,8 @@ import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 import { Ticket, TicketStatus } from 'app/types/Ticket'
 import { LaneContainer } from './LaneContainer'
 import { LaneContent } from './LaneContent'
+import { useAppDispatch } from 'app/types/Store'
+import { actions } from 'app/store/features/Metadata/metadataSlice'
 
 interface DataProps {
   tickets: Ticket[]
@@ -24,6 +26,12 @@ export const LaneComponent = ({
   droppableStateSnapshot,
 }: ComponentProps): JSX.Element => {
   const [isMouseOver, setIsMouseOver] = useState(false)
+  const dispatch = useAppDispatch()
+
+  const handleAddButtonClick = () => {
+    dispatch(actions.toggleStageShow(true))
+  }
+
   return (
     <LaneContainer
       droppableProvided={droppableProvided}
@@ -34,6 +42,7 @@ export const LaneComponent = ({
       <LaneContent
         tickets={tickets}
         shouldShowAddButton={laneStatus === TicketStatus.Pending || isMouseOver}
+        onAddButtonClick={handleAddButtonClick}
         droppableProvided={droppableProvided}
       />
     </LaneContainer>

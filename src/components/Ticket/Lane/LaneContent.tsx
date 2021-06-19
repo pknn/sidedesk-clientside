@@ -10,15 +10,20 @@ interface DataProps {
   shouldShowAddButton: boolean
 }
 
+interface ActionProps {
+  onAddButtonClick: VoidFunction
+}
+
 interface DroppableProps {
   droppableProvided: DroppableProvided
 }
 
-type ComponentProps = DataProps & DroppableProps
+type ComponentProps = DataProps & ActionProps & DroppableProps
 
 export const LaneContent = ({
   tickets,
   shouldShowAddButton,
+  onAddButtonClick,
   droppableProvided,
 }: ComponentProps) => (
   <div className="p-2 pt-0">
@@ -34,7 +39,7 @@ export const LaneContent = ({
     {droppableProvided.placeholder}
     <AddItemButton
       shouldShowAddButton={shouldShowAddButton}
-      onClick={() => console.log('clicked')}
+      onClick={onAddButtonClick}
     />
   </div>
 )
