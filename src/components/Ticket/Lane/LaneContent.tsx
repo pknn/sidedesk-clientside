@@ -15,7 +15,7 @@ interface DroppableProps {
 type ComponentProps = DataProps & DroppableProps
 
 export const LaneContent = ({ tickets, droppableProvided }: ComponentProps) => (
-  <div className="p-2 pt-0">
+  <div className="px-2">
     {tickets.map((ticket, index) => (
       <Card
         key={ticket.id}

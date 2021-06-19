@@ -5,6 +5,7 @@ import { Ticket, TicketStatus } from 'app/types/Ticket'
 import { LaneContainer } from './LaneContainer'
 import { LaneHeader } from './LaneHeader'
 import { LaneContent } from './LaneContent'
+import { Add } from '../Add'
 
 interface DataProps {
   tickets: Ticket[]
@@ -34,5 +35,6 @@ export const LaneComponent = ({
       isDraggingFrom={!!droppableStateSnapshot.draggingFromThisWith}
     />
     <LaneContent tickets={tickets} droppableProvided={droppableProvided} />
+    <Add />
   </LaneContainer>
 )
