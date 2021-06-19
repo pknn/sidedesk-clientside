@@ -1,5 +1,6 @@
 import React from 'react'
 import { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd'
+
 import { CardContainer } from './CardContainer'
 import { CardContent } from './CardContent'
 

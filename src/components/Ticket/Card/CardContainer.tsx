@@ -1,8 +1,10 @@
 import React from 'react'
 import { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd'
 
+import { Children } from 'app/types/Primitive'
+
 interface PrimitiveProps {
-  children: JSX.Element
+  children: Children
 }
 
 interface DraggableProps {
