@@ -4,29 +4,6 @@ import { TicketStatus } from 'app/types/Ticket'
 
 interface DataProps {
   laneStatus: TicketStatus
-  isDraggingOver: boolean
-  isDraggingFrom: boolean
-}
-
-const getLaneHeaderClassNames = (
-  isDraggingOver: boolean,
-  isDraggingFrom: boolean,
-) => {
-  let color = 'bg-gray-50'
-  if (isDraggingOver) {
-    if (isDraggingFrom) {
-      color = 'bg-blue-100'
-    } else {
-      color = 'bg-green-100'
-    }
-  } else if (isDraggingFrom) {
-    color = 'bg-red-100'
-  }
-
-  return [
-    'flex items-center sticky top-10 p-2 pt-4 transition-colors duration-150',
-    color,
-  ].join(' ')
 }
 
 const getStatusLaneDotColor = (laneStatus: TicketStatus) => {
@@ -50,12 +27,8 @@ const getStatusLaneDot = (laneStatus: TicketStatus) => {
   return <div className={className} />
 }
 
-export const LaneHeader = ({
-  laneStatus,
-  isDraggingOver,
-  isDraggingFrom,
-}: DataProps): JSX.Element => (
-  <div className={getLaneHeaderClassNames(isDraggingOver, isDraggingFrom)}>
+export const LaneHeader = ({ laneStatus }: DataProps): JSX.Element => (
+  <div className="flex items-center top-10 p-2 pt-4 w-full bg-gray-50">
     {getStatusLaneDot(laneStatus)}
     <span className="font-semibold text-gray-500 text-sm italic">
       {TicketStatus[laneStatus].toUpperCase()}

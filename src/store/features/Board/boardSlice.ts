@@ -10,10 +10,10 @@ import {
 import { Ticket, TicketStatus } from 'app/types/Ticket'
 
 const initialState: BoardState = {
-  pendingTickets: getTickets(5, TicketStatus.Pending),
-  acceptedTickets: getTickets(5, TicketStatus.Accepted),
-  resolvedTickets: getTickets(5, TicketStatus.Resolved),
-  rejectedTickets: getTickets(5, TicketStatus.Rejected),
+  pendingTickets: getTickets(10, TicketStatus.Pending),
+  acceptedTickets: getTickets(10, TicketStatus.Accepted),
+  resolvedTickets: getTickets(10, TicketStatus.Resolved),
+  rejectedTickets: getTickets(10, TicketStatus.Rejected),
 }
 
 const getReorderedTicketList = (
