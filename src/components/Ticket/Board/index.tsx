@@ -1,26 +1,15 @@
 import React from 'react'
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { DropResult } from 'react-beautiful-dnd'
 
-import { Lane } from 'app/components/Ticket/Lane'
-import { TicketStatus } from 'app/types/Ticket'
-import { ticketStatusOptions } from 'app/helpers/mockTicket'
 import {
-  getKeyFromStatus,
   getStatusFromString,
   TicketStatusKeys,
 } from 'app/helpers/statusMappers'
 import { useAppDispatch, useAppSelector } from 'app/types/Store'
-import { BoardState, MoveActionPayload } from 'app/types/Board'
+import { MoveActionPayload } from 'app/types/Board'
 import { actions } from 'app/store/features/boardSlice'
-
-const toLaneComponent = (state: BoardState) =>
-  ticketStatusOptions.map((ticketStatus: TicketStatus) => (
-    <Lane
-      key={ticketStatus}
-      tickets={state[getKeyFromStatus(ticketStatus)]}
-      laneStatus={ticketStatus}
-    />
-  ))
+import { BoardContainer } from './BoardContainer'
+import { BoardContent } from './BoardContent'
 
 export const Board = (): JSX.Element => {
   const boardState = useAppSelector((state) => state.board)
@@ -44,10 +33,8 @@ export const Board = (): JSX.Element => {
   }
 
   return (
-    <div className="w-full flex justify-between">
-      <DragDropContext onDragEnd={handleDragEnd}>
-        {toLaneComponent(boardState)}
-      </DragDropContext>
-    </div>
+    <BoardContainer onDragEnd={handleDragEnd}>
+      <BoardContent {...boardState} />
+    </BoardContainer>
   )
 }
