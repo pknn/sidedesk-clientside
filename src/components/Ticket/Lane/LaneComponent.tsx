@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Ticket, TicketStatus } from 'app/types/Ticket'
+import { Add } from 'app/components/AddButton'
 import { LaneContainer } from './LaneContainer'
 import { LaneHeader } from './LaneHeader'
 import { LaneContent } from './LaneContent'
-import { Add } from '../Add'
 
 interface DataProps {
   tickets: Ticket[]
@@ -39,7 +39,9 @@ export const LaneComponent = ({
         isDraggingFrom={!!droppableStateSnapshot.draggingFromThisWith}
       />
       <LaneContent tickets={tickets} droppableProvided={droppableProvided} />
-      <Add shouldShowAddButton={isMouseOver} />
+      <Add
+        shouldShowAddButton={laneStatus === TicketStatus.Pending || isMouseOver}
+      />
     </LaneContainer>
   )
 }
