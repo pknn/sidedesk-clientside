@@ -2,7 +2,7 @@ import React from 'react'
 import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Children } from 'app/types/Primitive'
-import { Basis } from './LaneComponent.styled'
+import { Basis } from 'app/components/Layout/Basis'
 
 interface PrimitiveProps {
   children: Children

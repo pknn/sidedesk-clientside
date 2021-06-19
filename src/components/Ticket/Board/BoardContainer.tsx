@@ -17,7 +17,7 @@ export const BoardContainer = ({
   children,
   onDragEnd,
 }: ComponentProps): JSX.Element => (
-  <div className="w-full flex justify-between">
+  <div className="w-full">
     <DragDropContext onDragEnd={onDragEnd}>{children}</DragDropContext>
   </div>
 )

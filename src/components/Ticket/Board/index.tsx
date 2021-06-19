@@ -9,6 +9,7 @@ import {
   getMoveCrossLaneActionPayload,
   getMoveInLaneActionPayload,
 } from 'app/store/features/Board/helpers'
+import { BoardHeader } from './BoardHeader'
 
 export const Board = (): JSX.Element => {
   const boardState = useAppSelector((state) => state.board)
@@ -32,6 +33,7 @@ export const Board = (): JSX.Element => {
 
   return (
     <BoardContainer onDragEnd={handleDragEnd}>
+      <BoardHeader />
       <BoardContent {...boardState} />
     </BoardContainer>
   )
