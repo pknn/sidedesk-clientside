@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Ticket, TicketStatus } from 'app/types/Ticket'
@@ -19,13 +19,23 @@ type ComponentProps = DataProps & DroppableProps
 
 export const LaneComponent = ({
   tickets,
+  laneStatus,
   droppableProvided,
   droppableStateSnapshot,
-}: ComponentProps): JSX.Element => (
-  <LaneContainer
-    droppableProvided={droppableProvided}
-    droppableStateSnapshot={droppableStateSnapshot}
-  >
-    <LaneContent tickets={tickets} droppableProvided={droppableProvided} />
-  </LaneContainer>
-)
+}: ComponentProps): JSX.Element => {
+  const [isMouseOver, setIsMouseOver] = useState(false)
+  return (
+    <LaneContainer
+      droppableProvided={droppableProvided}
+      droppableStateSnapshot={droppableStateSnapshot}
+      onMouseOver={() => setIsMouseOver(true)}
+      onMouseLeave={() => setIsMouseOver(false)}
+    >
+      <LaneContent
+        tickets={tickets}
+        shouldShowAddButton={laneStatus === TicketStatus.Pending || isMouseOver}
+        droppableProvided={droppableProvided}
+      />
+    </LaneContainer>
+  )
+}
