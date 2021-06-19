@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Version } from 'app/types/Metadata'
+import { Version } from 'app/store/features/Metadata/types'
 
 interface DataProps {
   version: Version

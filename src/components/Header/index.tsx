@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { Version } from 'app/types/Metadata'
+import { Version } from 'app/store/features/Metadata/types'
 import { ApplicationState } from 'app/types/Store'
 
 import { HeaderComponent } from './HeaderComponent'

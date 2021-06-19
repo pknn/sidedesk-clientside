@@ -1,7 +1,7 @@
 import {
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
-} from 'app/types/Board'
+} from 'app/store/features/Board/types'
 import { DraggableLocation } from 'react-beautiful-dnd'
 
 export const getMoveInLaneActionPayload = (

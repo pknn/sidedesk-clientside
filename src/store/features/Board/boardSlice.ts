@@ -6,7 +6,7 @@ import {
   BoardState,
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
-} from 'app/types/Board'
+} from 'app/store/features/Board/types'
 import { Ticket, TicketStatus } from 'app/types/Ticket'
 
 const initialState: BoardState = {
