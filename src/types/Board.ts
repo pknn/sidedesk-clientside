@@ -1,4 +1,4 @@
-import { Ticket, TicketStatus } from 'app/types/Ticket'
+import { Ticket } from 'app/types/Ticket'
 
 export interface BoardState {
   pendingTickets: Ticket[]
@@ -9,10 +9,16 @@ export interface BoardState {
 
 interface TicketPosition {
   index: number
-  statusLane: TicketStatus
+  laneId: string
 }
 
-export interface MoveActionPayload {
+export interface MoveCrossLaneActionPayload {
   from: TicketPosition
   to: TicketPosition
+}
+
+export interface MoveInLaneActionPayload {
+  from: number
+  to: number
+  laneId: string
 }
