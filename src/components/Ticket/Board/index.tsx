@@ -2,9 +2,13 @@ import React from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 
 import { useAppDispatch, useAppSelector } from 'app/types/Store'
-import { actions } from 'app/store/features/boardSlice'
+import { actions } from 'app/store/features/Board/boardSlice'
 import { BoardContainer } from './BoardContainer'
 import { BoardContent } from './BoardContent'
+import {
+  getMoveCrossLaneActionPayload,
+  getMoveInLaneActionPayload,
+} from 'app/store/features/Board/helpers'
 
 export const Board = (): JSX.Element => {
   const boardState = useAppSelector((state) => state.board)
@@ -15,24 +19,13 @@ export const Board = (): JSX.Element => {
 
     if (source.droppableId === destination.droppableId) {
       dispatch(
-        actions.moveInLane({
-          laneId: source.droppableId,
-          from: source.index,
-          to: destination.index,
-        }),
+        actions.moveInLane(getMoveInLaneActionPayload(source, destination)),
       )
     } else {
       dispatch(
-        actions.moveCrossLane({
-          from: {
-            laneId: source.droppableId,
-            index: source.index,
-          },
-          to: {
-            laneId: destination.droppableId,
-            index: destination.index,
-          },
-        }),
+        actions.moveCrossLane(
+          getMoveCrossLaneActionPayload(source, destination),
+        ),
       )
     }
   }
