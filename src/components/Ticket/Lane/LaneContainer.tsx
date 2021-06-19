@@ -2,7 +2,6 @@ import React from 'react'
 import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Children } from 'app/types/Primitive'
-import { Basis } from 'app/components/Layout/Basis'
 
 interface PrimitiveProps {
   children: Children
@@ -30,7 +29,7 @@ const getLaneClassNames = (
     color = 'bg-red-100'
   }
   return [
-    'rounded shadow-sm h-full relative transition-colors duration-150',
+    'rounded rounded-t-none shadow-sm h-full relative transition-colors duration-150',
     color,
   ].join(' ')
 }
@@ -40,15 +39,13 @@ export const LaneContainer = ({
   droppableProvided,
   droppableStateSnapshot,
 }: ComponentProps): JSX.Element => (
-  <Basis>
-    <div
-      ref={droppableProvided.innerRef}
-      className={getLaneClassNames(
-        droppableStateSnapshot.isDraggingOver,
-        !!droppableStateSnapshot.draggingFromThisWith,
-      )}
-    >
-      {children}
-    </div>
-  </Basis>
+  <div
+    ref={droppableProvided.innerRef}
+    className={getLaneClassNames(
+      droppableStateSnapshot.isDraggingOver,
+      !!droppableStateSnapshot.draggingFromThisWith,
+    )}
+  >
+    {children}
+  </div>
 )

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { TicketStatus } from 'app/types/Ticket'
-import { Basis } from 'app/components/Layout/Basis'
 
 interface DataProps {
   laneStatus: TicketStatus
@@ -29,10 +28,10 @@ const getStatusLaneDot = (laneStatus: TicketStatus) => {
 }
 
 export const LaneHeader = ({ laneStatus }: DataProps): JSX.Element => (
-  <Basis className="flex items-center top-10 p-2 pt-4 w-full bg-gray-100">
+  <div className="flex items-center top-10 p-2 pt-4 w-full bg-gray-50">
     {getStatusLaneDot(laneStatus)}
     <span className="font-semibold text-gray-500 text-sm italic">
       {TicketStatus[laneStatus].toUpperCase()}
     </span>
-  </Basis>
+  </div>
 )
