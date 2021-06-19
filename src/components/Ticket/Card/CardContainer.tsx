@@ -16,7 +16,7 @@ type ComponentProps = PrimitiveProps & DraggableProps
 
 const getCardClassNames = (isDragging: boolean) => {
   return [
-    'mb-2 w-full hover:bg-gray-100 p-4 rounded shadow cursor-pointer',
+    'my-2 w-full hover:bg-gray-100 p-4 rounded shadow cursor-pointer',
     isDragging ? 'bg-gray-200' : 'bg-white',
   ].join(' ')
 }
