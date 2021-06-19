@@ -23,7 +23,7 @@ const getLaneHeaderClassNames = (
   }
 
   return [
-    'flex items-center sticky top-10 px-2 py-4 transition-colors duration-150',
+    'flex items-center sticky top-10 p-2 pt-4 transition-colors duration-150',
     color,
   ].join(' ')
 }
