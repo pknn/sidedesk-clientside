@@ -1,5 +1,6 @@
-import { TicketStatus } from 'app/types/Ticket'
 import React from 'react'
+
+import { TicketStatus } from 'app/types/Ticket'
 
 interface DataProps {
   laneStatus: TicketStatus
