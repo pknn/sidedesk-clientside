@@ -14,7 +14,7 @@ type ComponentProps = DataProps & ActionProps
 
 const getClassName = (shouldShowAddButton: boolean) =>
   [
-    'p-2 text-sm hover:bg-gray-300 rounded cursor-pointer w-full text-left',
+    'p-2 text-sm hover:bg-gray-300 rounded cursor-pointer w-full text-left focus:outline-none outline-none',
     shouldShowAddButton ? 'visible' : 'invisible',
   ].join(' ')
 
