@@ -5,7 +5,7 @@ import { Ticket, TicketStatus } from 'app/types/Ticket'
 import { LaneContainer } from './LaneContainer'
 import { LaneContent } from './LaneContent'
 import { useAppDispatch } from 'app/types/Store'
-import { actions } from 'app/store/features/Metadata/metadataSlice'
+import { actions } from 'app/store/features/Metadata/slice'
 
 interface DataProps {
   tickets: Ticket[]

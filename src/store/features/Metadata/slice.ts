@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { MetadataState } from 'app/store/features/Metadata/types'
+import { MetadataState } from './types'
 
 const initialState: MetadataState = {
   version: import.meta.env.VITE_CS_VERSION,
   shouldShowEditTicketModal: false,
 }
 
-export const MetadataSlice = createSlice({
+const MetadataSlice = createSlice({
   name: 'metadata',
   initialState,
   reducers: {

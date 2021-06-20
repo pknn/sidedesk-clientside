@@ -7,7 +7,8 @@ import {
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
 } from 'app/store/features/Board/types'
-import { Ticket, TicketStatus } from 'app/types/Ticket'
+import { TicketStatus } from 'app/types/Ticket'
+import { getReorderedTicketList, getMovedTicketLists } from './helpers'
 
 const initialState: BoardState = {
   pendingTickets: getTickets(10, TicketStatus.Pending),
@@ -15,28 +16,6 @@ const initialState: BoardState = {
   resolvedTickets: getTickets(10, TicketStatus.Resolved),
   rejectedTickets: getTickets(10, TicketStatus.Rejected),
 }
-
-const getReorderedTicketList = (
-  tickets: Ticket[],
-  from: number,
-  to: number,
-) => {
-  const result = [...tickets]
-  const [movingTicket] = result.splice(from, 1)
-  result.splice(to, 0, movingTicket)
-
-  return result
-}
-
-const getMovedTicketLists = (
-  source: Ticket[],
-  sink: Ticket[],
-  from: number,
-  to: number,
-): [Ticket[], Ticket[]] => [
-  source.filter((_, index) => index !== from),
-  sink.slice(0, to).concat(source[from]).concat(sink.slice(to)),
-]
 
 const BoardSlice = createSlice({
   name: 'board',

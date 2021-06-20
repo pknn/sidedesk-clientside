@@ -1,8 +1,10 @@
+import { DraggableLocation } from 'react-beautiful-dnd'
+
 import {
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
 } from 'app/store/features/Board/types'
-import { DraggableLocation } from 'react-beautiful-dnd'
+import { Ticket } from 'app/types/Ticket'
 
 export const getMoveInLaneActionPayload = (
   source: DraggableLocation,
@@ -26,3 +28,25 @@ export const getMoveCrossLaneActionPayload = (
     index: destination.index,
   },
 })
+
+export const getReorderedTicketList = (
+  tickets: Ticket[],
+  from: number,
+  to: number,
+) => {
+  const result = [...tickets]
+  const [movingTicket] = result.splice(from, 1)
+  result.splice(to, 0, movingTicket)
+
+  return result
+}
+
+export const getMovedTicketLists = (
+  source: Ticket[],
+  sink: Ticket[],
+  from: number,
+  to: number,
+): [Ticket[], Ticket[]] => [
+  source.filter((_, index) => index !== from),
+  sink.slice(0, to).concat(source[from]).concat(sink.slice(to)),
+]
