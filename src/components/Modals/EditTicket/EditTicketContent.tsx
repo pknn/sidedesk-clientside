@@ -81,6 +81,9 @@ export const EditTicketContent = () => {
           />
         </div>
       </Field>
+      <button className="p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none">
+        Save
+      </button>
     </div>
   )
 }
