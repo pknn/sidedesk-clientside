@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 
 import { TicketStatus } from 'app/types/Ticket'
 import { Field, Input, TextArea } from './EditTicketInputs'
+import { ticketStatusOptions } from 'app/helpers/mockTicket'
+import {
+  getStatusFromString,
+  TicketStatusKeys,
+} from 'app/helpers/statusMappers'
 
 export const EditTicketContent = () => {
   const [title, setTitle] = useState<string>('')
@@ -27,6 +32,27 @@ export const EditTicketContent = () => {
           type="text"
           onChange={(event) => setTitle(event.target.value)}
         />
+      </Field>
+      <Field>
+        <select
+          value={status}
+          className="p-1 hover:bg-gray-200 rounded"
+          onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+            setStatus(
+              getStatusFromString(event.target.value as TicketStatusKeys),
+            )
+          }
+        >
+          {ticketStatusOptions.map((status) => (
+            <option
+              className="rounded text-sm bg-gray-300"
+              key={status}
+              value={status}
+            >
+              {TicketStatus[status]}
+            </option>
+          ))}
+        </select>
       </Field>
       <Field>
         <p className="m-2 text-xs font-semibold">Description</p>
