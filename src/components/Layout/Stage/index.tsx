@@ -10,7 +10,7 @@ interface DataProps {
 }
 
 interface ActionProps {
-  onClick: VoidFunction
+  onDismiss: VoidFunction
 }
 
 type ComponentProps = PrimitiveProps & DataProps & ActionProps
@@ -24,12 +24,12 @@ const getStageClassNames = (shouldShowStage: boolean) =>
 export const Stage = ({
   children,
   shouldShowStage,
-  onClick,
+  onDismiss,
 }: ComponentProps): JSX.Element => (
   <div className={shouldShowStage ? 'block' : 'hidden'}>
     <div
       className={getStageClassNames(shouldShowStage)}
-      onClickCapture={onClick}
+      onClickCapture={onDismiss}
     />
     <div className="z-30">{children}</div>
   </div>

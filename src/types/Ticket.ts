@@ -15,3 +15,11 @@ export interface Ticket {
   createdAt: Date
   updatedAt: Date
 }
+
+export interface TicketCreationForm {
+  title?: string
+  description?: string
+  reporterName?: string
+  reporterEmail?: string
+  status: TicketStatus
+}

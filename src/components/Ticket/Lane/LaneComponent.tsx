@@ -29,7 +29,7 @@ export const LaneComponent = ({
   const dispatch = useAppDispatch()
 
   const handleAddButtonClick = () => {
-    dispatch(actions.toggleStageShow(true))
+    dispatch(actions.toggleEditTicketModal(true))
   }
 
   return (
