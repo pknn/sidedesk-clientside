@@ -8,7 +8,11 @@ import {
   TicketStatusKeys,
 } from 'app/helpers/statusMappers'
 
-export const EditTicketContent = () => {
+interface ActionProps {
+  onSave: VoidFunction
+}
+
+export const EditTicketContent = ({ onSave }: ActionProps) => {
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [reporterName, setReporterName] = useState<string>('')
@@ -81,7 +85,10 @@ export const EditTicketContent = () => {
           />
         </div>
       </Field>
-      <button className="p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none">
+      <button
+        className="p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none"
+        onClick={onSave}
+      >
         Save
       </button>
     </div>

@@ -17,10 +17,14 @@ export const EditTicket = () => {
     dispatch(actions.toggleEditTicketModal(false))
   }
 
+  const handleSave = () => {
+    handleOnStageDismiss()
+  }
+
   return (
     <Stage shouldShowStage={shouldShowModal} onDismiss={handleOnStageDismiss}>
       <EditTicketContainer>
-        <EditTicketContent />
+        <EditTicketContent onSave={handleSave} />
       </EditTicketContainer>
     </Stage>
   )
