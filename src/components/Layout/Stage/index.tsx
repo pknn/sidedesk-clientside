@@ -17,7 +17,7 @@ type ComponentProps = PrimitiveProps & DataProps & ActionProps
 
 const getStageClassNames = (shouldShowStage: boolean) =>
   [
-    'z-40 absolute bg-gray-700 bg-opacity-80 inset-0 m-auto',
+    'z-10 absolute bg-gray-700 bg-opacity-80 inset-0 m-auto',
     shouldShowStage ? 'block' : 'hidden',
   ].join(' ')
 
@@ -26,7 +26,11 @@ export const Stage = ({
   shouldShowStage,
   onClick,
 }: ComponentProps): JSX.Element => (
-  <div className={getStageClassNames(shouldShowStage)} onClick={onClick}>
-    {children}
+  <div className={shouldShowStage ? 'block' : 'hidden'}>
+    <div
+      className={getStageClassNames(shouldShowStage)}
+      onClickCapture={onClick}
+    />
+    <div className="z-30">{children}</div>
   </div>
 )
