@@ -6,7 +6,7 @@ interface PrimitiveProps {
 }
 
 export const EditTicketContainer = ({ children }: PrimitiveProps) => (
-  <div className="absolute inset-0 m-auto w-2/3 z-40 h-1/2 bg-white">
+  <div className="absolute inset-0 m-auto w-3/4 z-40 h-1/2 bg-white">
     {children}
   </div>
 )

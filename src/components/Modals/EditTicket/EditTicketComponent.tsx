@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { EditTicketContainer } from './EditTicketContainer'
+import { EditTicketContent } from './EditTicketContent'
 
 export const EditTicket = () => (
   <EditTicketContainer>
-    <div className="">
-      <h1>Hi</h1>
-    </div>
+    <EditTicketContent />
   </EditTicketContainer>
 )
