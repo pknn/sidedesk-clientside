@@ -11,3 +11,7 @@ export interface TicketCreationForm {
 export interface TicketFormState {
   ticketForm?: TicketCreationForm
 }
+
+export interface SetTicketFormPayload {
+  ticketForm: TicketCreationForm
+}
