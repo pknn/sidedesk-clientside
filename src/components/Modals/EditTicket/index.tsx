@@ -10,6 +10,7 @@ export const EditTicket = () => {
   const shouldShowModal = useAppSelector(
     (state) => state.metadata.shouldShowEditTicketModal,
   )
+  const editingTicket = useAppSelector((state) => state.metadata.editingTicket)
 
   const dispatch = useAppDispatch()
 
@@ -24,7 +25,11 @@ export const EditTicket = () => {
   return (
     <Stage shouldShowStage={shouldShowModal} onDismiss={handleOnStageDismiss}>
       <EditTicketContainer>
-        <EditTicketContent onSave={handleSave} />
+        <EditTicketContent
+          key={editingTicket?.id}
+          editingTicket={editingTicket}
+          onSave={handleSave}
+        />
       </EditTicketContainer>
     </Stage>
   )

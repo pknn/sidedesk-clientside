@@ -1,23 +1,45 @@
-import React, { useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 
-import { TicketStatus } from 'app/types/Ticket'
+import { Ticket, TicketStatus } from 'app/types/Ticket'
 import { Field, Input, TextArea } from './EditTicketInputs'
 import { ticketStatusOptions } from 'app/helpers/mockTicket'
 import {
   getStatusFromString,
   TicketStatusKeys,
 } from 'app/helpers/statusMappers'
+import { getOr, getOrElse } from 'app/helpers/value'
+
+interface DataProps {
+  editingTicket?: Ticket
+}
 
 interface ActionProps {
   onSave: VoidFunction
 }
 
-export const EditTicketContent = ({ onSave }: ActionProps) => {
-  const [title, setTitle] = useState<string>('')
-  const [description, setDescription] = useState<string>('')
-  const [reporterName, setReporterName] = useState<string>('')
-  const [reporterEmail, setReporterEmail] = useState<string | undefined>('')
-  const [status, setStatus] = useState<TicketStatus>(TicketStatus.Pending)
+type ComponentProps = DataProps & ActionProps
+
+const getStringOrEmpty = getOr('')
+
+export const EditTicketContent = ({
+  editingTicket,
+  onSave,
+}: ComponentProps) => {
+  const [title, setTitle] = useState<string>(
+    getStringOrEmpty(editingTicket?.title),
+  )
+  const [description, setDescription] = useState<string>(
+    getStringOrEmpty(editingTicket?.description),
+  )
+  const [reporterName, setReporterName] = useState<string>(
+    getStringOrEmpty(editingTicket?.reporterName),
+  )
+  const [reporterEmail, setReporterEmail] = useState<string | undefined>(
+    editingTicket?.reporterEmail,
+  )
+  const [status, setStatus] = useState<TicketStatus>(
+    getOrElse(editingTicket?.status, TicketStatus.Pending),
+  )
 
   const handleTextAreaChangeEvent = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
@@ -25,6 +47,12 @@ export const EditTicketContent = ({ onSave }: ActionProps) => {
     setDescription(event.target.value)
     event.target.style.height = `${event.target.scrollHeight}px`
   }
+
+  useLayoutEffect(() => {
+    const textArea = document.querySelector('textarea')
+    if (!textArea) return
+    textArea.style.height = `${textArea.scrollHeight}px`
+  })
 
   return (
     <div className="p-6">
