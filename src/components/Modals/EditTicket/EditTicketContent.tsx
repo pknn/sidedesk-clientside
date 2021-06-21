@@ -4,6 +4,7 @@ import { TicketForm, TicketStatus } from 'app/types/Ticket'
 import { Field, Input, TextArea } from './EditTicketInputs'
 import { ticketStatusOptions } from 'app/helpers/mockTicket'
 import { getOr, getOrElse } from 'app/helpers/value'
+import { DateString } from './EditTicket.styled'
 
 interface DataProps {
   ticketForm?: TicketForm
@@ -65,6 +66,18 @@ export const EditTicketContent = ({
 
   return (
     <div className="p-6">
+      <div>
+        {ticketForm?.createdAt && (
+          <DateString className="text-xs ml-2 text-gray-400">
+            Created at: {new Date(ticketForm.createdAt).toLocaleString('en-US')}
+          </DateString>
+        )}
+        {ticketForm?.updatedAt && (
+          <DateString className="text-xs ml-2 text-gray-400">
+            Updated at: {new Date(ticketForm.updatedAt).toLocaleString('en-US')}
+          </DateString>
+        )}
+      </div>
       <Field>
         <Input
           className="text-xl font-semibold"
@@ -126,7 +139,7 @@ export const EditTicketContent = ({
         </div>
       </Field>
       <button
-        className="p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none"
+        className="m-2 p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none"
         onClick={handleSave}
       >
         Save
