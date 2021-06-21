@@ -10,6 +10,7 @@ import {
   getMoveInLaneActionPayload,
 } from 'app/store/features/Board/helpers'
 import { BoardHeader } from './BoardHeader'
+import { moveTicket } from 'app/store/features/Board/thunk'
 
 export const Board = (): JSX.Element => {
   const boardState = useAppSelector((state) => state.board)
@@ -23,11 +24,8 @@ export const Board = (): JSX.Element => {
         actions.moveInLane(getMoveInLaneActionPayload(source, destination)),
       )
     } else {
-      dispatch(
-        actions.moveCrossLane(
-          getMoveCrossLaneActionPayload(source, destination),
-        ),
-      )
+      const payload = getMoveCrossLaneActionPayload(source, destination)
+      dispatch(moveTicket(payload))
     }
   }
 

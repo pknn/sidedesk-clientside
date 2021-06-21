@@ -1,6 +1,6 @@
 import faker from 'faker'
 
-import { Ticket, TicketForm, TicketStatus } from 'app/types/Ticket'
+import { Ticket, TicketStatus } from 'app/types/Ticket'
 
 export const ticketStatusOptions: TicketStatus[] = [
   TicketStatus.Pending,

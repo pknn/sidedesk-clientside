@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getMockTicket, getTickets } from 'app/helpers/mockTicket'
+import { getMockTicket, ticketStatusOptions } from 'app/helpers/mockTicket'
 import { getKeyFromStatus, getKeyFromString } from 'app/helpers/statusMappers'
 import {
   BoardState,
+  EditTicketActionPayload,
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
 } from 'app/store/features/Board/types'
@@ -11,10 +12,10 @@ import { Ticket, TicketCreationForm, TicketStatus } from 'app/types/Ticket'
 import { getReorderedTicketList, getMovedTicketLists } from './helpers'
 
 const initialState: BoardState = {
-  pendingTickets: getTickets(10, TicketStatus.Pending),
-  acceptedTickets: getTickets(10, TicketStatus.Accepted),
-  resolvedTickets: getTickets(10, TicketStatus.Resolved),
-  rejectedTickets: getTickets(10, TicketStatus.Rejected),
+  pendingTickets: [],
+  acceptedTickets: [],
+  resolvedTickets: [],
+  rejectedTickets: [],
 }
 
 const BoardSlice = createSlice({
@@ -39,18 +40,44 @@ const BoardSlice = createSlice({
         state[sourceKey],
         state[sinkKey],
         payload.from.index,
-        payload.to.index,
+        payload.to,
       )
 
       state[sourceKey] = updatedSource
       state[sinkKey] = updatedSink
     },
-    editTicket(state: BoardState, { payload }: PayloadAction<Ticket>) {
-      const tickets = state[getKeyFromStatus(payload.status)].filter(
-        (ticket) => ticket.id !== payload.id,
-      )
-      tickets.push(payload)
-      state[getKeyFromStatus(payload.status)] = tickets
+    setTickets(state: BoardState, { payload }: PayloadAction<Ticket[]>) {
+      ticketStatusOptions.map((status) => {
+        const key = getKeyFromStatus(status)
+        const tickets = payload
+          .filter((ticket) => ticket.status === status)
+          .sort((a, b) => a.id - b.id)
+        state[key] = tickets
+      })
+    },
+    editTicket(
+      state: BoardState,
+      { payload }: PayloadAction<EditTicketActionPayload>,
+    ) {
+      const { isStatusChanged, statusChangedFrom, updatedTicket } = payload
+      if (!isStatusChanged) {
+        const statusKey = getKeyFromStatus(updatedTicket.status as TicketStatus)
+        state[statusKey] = state[statusKey].filter(
+          (ticket) => ticket.id !== updatedTicket.id,
+        )
+        state[statusKey].push(updatedTicket)
+      } else {
+        const oldStatusKey = getKeyFromStatus(statusChangedFrom as TicketStatus)
+        const newStatusKey = getKeyFromStatus(
+          updatedTicket.status as TicketStatus,
+        )
+
+        state[oldStatusKey] = state[oldStatusKey].filter(
+          (ticket) => ticket.id !== updatedTicket.id,
+        )
+
+        state[newStatusKey].push(payload.updatedTicket)
+      }
     },
     createTicket(
       state: BoardState,

@@ -6,18 +6,12 @@ import { Children } from 'app/types/Primitive'
 interface PrimitiveProps {
   children: Children
 }
-
-interface ActionProps {
-  onMouseOver: VoidFunction
-  onMouseLeave: VoidFunction
-}
-
 interface DroppableProps {
   droppableProvided: DroppableProvided
   droppableStateSnapshot: DroppableStateSnapshot
 }
 
-type ComponentProps = PrimitiveProps & ActionProps & DroppableProps
+type ComponentProps = PrimitiveProps & DroppableProps
 
 const getLaneClassNames = (
   isDraggingOver: boolean,
@@ -41,8 +35,6 @@ const getLaneClassNames = (
 
 export const LaneContainer = ({
   children,
-  onMouseOver,
-  onMouseLeave,
   droppableProvided,
   droppableStateSnapshot,
 }: ComponentProps): JSX.Element => (
@@ -52,8 +44,6 @@ export const LaneContainer = ({
       droppableStateSnapshot.isDraggingOver,
       !!droppableStateSnapshot.draggingFromThisWith,
     )}
-    onMouseOverCapture={onMouseOver}
-    onMouseLeave={onMouseLeave}
   >
     {children}
   </div>

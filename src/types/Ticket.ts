@@ -1,8 +1,8 @@
 export enum TicketStatus {
-  Pending = 1,
-  Accepted = 2,
-  Resolved = 3,
-  Rejected = 4,
+  Pending = 0,
+  Accepted = 1,
+  Resolved = 2,
+  Rejected = 3,
 }
 
 export interface Ticket {
@@ -35,6 +35,17 @@ export interface TicketCreationForm {
   status: TicketStatus
 }
 
+export interface TicketBody {
+  id: number
+  title: string
+  description: string
+  reporter_name: string
+  reporter_email?: string
+  status: TicketStatus
+  created_at: Date
+  updated_at: Date
+}
+
 export const toTicketForm = (ticket: Ticket): TicketForm => ticket as TicketForm
 
 export const toTicket = (ticketForm: TicketForm): Ticket => {
@@ -50,7 +61,7 @@ export const toTicket = (ticketForm: TicketForm): Ticket => {
   if (
     Object.entries(ticketForm)
       .filter(([k]) => requiredFields.includes(k))
-      .some(([_, v]) => !v)
+      .some(([_, v]) => v === undefined)
   ) {
     throw new Error('Cannot create Ticket with empty fields')
   }
@@ -65,7 +76,7 @@ export const toTicketCreationForm = (
   if (
     Object.entries(ticketForm)
       .filter(([k]) => requiredFields.includes(k))
-      .some(([_, v]) => !v)
+      .some(([_, v]) => v === undefined)
   ) {
     throw new Error('Cannot create Ticket with empty fields')
   }

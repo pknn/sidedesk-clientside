@@ -6,7 +6,7 @@ import { EditTicketContent } from './EditTicketContent'
 import { useAppDispatch, useAppSelector } from 'app/types/Store'
 import { actions as metadataActions } from 'app/store/features/Metadata/slice'
 import { TicketForm, toTicket, toTicketCreationForm } from 'app/types/Ticket'
-import { actions as boardActions } from 'app/store/features/Board/slice'
+import { createTicket, updateTicket } from 'app/store/features/Board/thunk'
 
 export const EditTicket = () => {
   const shouldShowModal = useAppSelector(
@@ -21,14 +21,14 @@ export const EditTicket = () => {
     dispatch(metadataActions.dismissEditTicketModal())
   }
 
-  const handleSave = (ticketForm: TicketForm) => {
+  const handleSave = (updatedTicketForm: TicketForm) => {
     try {
       if (isEditing) {
-        const ticket = toTicket(ticketForm)
-        dispatch(boardActions.editTicket(ticket))
+        const ticket = toTicket(updatedTicketForm)
+        dispatch(updateTicket(ticket))
       } else {
-        const ticket = toTicketCreationForm(ticketForm)
-        dispatch(boardActions.createTicket(ticket))
+        const ticket = toTicketCreationForm(updatedTicketForm)
+        dispatch(createTicket(ticket))
       }
     } catch (error) {
       alert(error)
