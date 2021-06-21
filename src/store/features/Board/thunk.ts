@@ -6,7 +6,7 @@ import {
   TicketStatusKeys,
 } from 'app/helpers/statusMappers'
 import { ApplicationState } from 'app/types/Store'
-import { Ticket, TicketCreationForm } from 'app/types/Ticket'
+import { Ticket, TicketCreationForm, TicketStatus } from 'app/types/Ticket'
 import { actions } from './slice'
 import { MoveCrossLaneActionPayload } from './types'
 
@@ -21,17 +21,27 @@ export const fetchTickets = createAsyncThunk(
 
 export const createTicket = createAsyncThunk(
   'board/create-ticket',
-  async (ticket: TicketCreationForm) => {
+  async (ticket: TicketCreationForm, thunkApi) => {
     ticketClient.createTicket(ticket)
+    thunkApi.dispatch(actions.createTicket(ticket))
   },
 )
 
 export const updateTicket = createAsyncThunk(
   'board/update-ticket',
-  async (ticket: Ticket) => {
-    const updatedResult = await ticketClient.updateTicket(ticket)
-
-    return updatedResult
+  async (ticket: Ticket, thunkApi) => {
+    const state = thunkApi.getState() as ApplicationState
+    const referenceTicketStatus = state.metadata.ticketForm
+      ?.status as TicketStatus
+    const updatedTicket = await ticketClient.updateTicket(ticket)
+    thunkApi.dispatch(
+      actions.editTicket({
+        isStatusChanged: referenceTicketStatus !== updatedTicket.status,
+        statusChangedFrom: referenceTicketStatus,
+        updatedTicket: updatedTicket,
+      }),
+    )
+    return updatedTicket
   },
 )
 

@@ -34,7 +34,7 @@ class TicketClient {
       reporter_email: ticket.reporterEmail,
       status: ticket.status,
     }
-    return this.client.put(`/${ticket.id}`, body)
+    return (await this.client.put(`/${ticket.id}`, body)).data as Ticket
   }
 }
 

@@ -1,4 +1,4 @@
-import { Ticket } from 'app/types/Ticket'
+import { Ticket, TicketStatus } from 'app/types/Ticket'
 
 export interface BoardState {
   pendingTickets: Ticket[]
@@ -21,4 +21,10 @@ export interface MoveInLaneActionPayload {
   from: number
   to: number
   laneId: string
+}
+
+export interface EditTicketActionPayload {
+  isStatusChanged: boolean
+  statusChangedFrom?: TicketStatus
+  updatedTicket: Ticket
 }
