@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getTickets } from 'app/helpers/mockTicket'
-import { getKeyFromString } from 'app/helpers/statusMappers'
+import { getMockTicket, getTickets } from 'app/helpers/mockTicket'
+import { getKeyFromStatus, getKeyFromString } from 'app/helpers/statusMappers'
 import {
   BoardState,
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
 } from 'app/store/features/Board/types'
-import { TicketStatus } from 'app/types/Ticket'
+import { Ticket, TicketCreationForm, TicketStatus } from 'app/types/Ticket'
 import { getReorderedTicketList, getMovedTicketLists } from './helpers'
 
 const initialState: BoardState = {
@@ -44,6 +44,23 @@ const BoardSlice = createSlice({
 
       state[sourceKey] = updatedSource
       state[sinkKey] = updatedSink
+    },
+    editTicket(state: BoardState, { payload }: PayloadAction<Ticket>) {
+      const tickets = state[getKeyFromStatus(payload.status)].filter(
+        (ticket) => ticket.id !== payload.id,
+      )
+      tickets.push(payload)
+      state[getKeyFromStatus(payload.status)] = tickets
+    },
+    createTicket(
+      state: BoardState,
+      { payload }: PayloadAction<TicketCreationForm>,
+    ) {
+      const ticket = {
+        ...getMockTicket(payload.status),
+        ...payload,
+      }
+      state[getKeyFromStatus(payload.status)].push(ticket)
     },
   },
 })

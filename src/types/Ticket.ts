@@ -27,6 +27,14 @@ export interface TicketForm {
   updatedAt?: Date
 }
 
+export interface TicketCreationForm {
+  title: string
+  description: string
+  reporterName: string
+  reporterEmail?: string
+  status: TicketStatus
+}
+
 export const toTicketForm = (ticket: Ticket): TicketForm => ticket as TicketForm
 
 export const toTicket = (ticketForm: TicketForm): Ticket => {
@@ -44,10 +52,25 @@ export const toTicket = (ticketForm: TicketForm): Ticket => {
       .filter(([k]) => requiredFields.includes(k))
       .some(([_, v]) => !v)
   ) {
-    throw new Error('Cannot create Ticket from TicketForm with empty fields')
+    throw new Error('Cannot create Ticket with empty fields')
   }
 
   return ticketForm as Ticket
+}
+
+export const toTicketCreationForm = (
+  ticketForm: TicketForm,
+): TicketCreationForm => {
+  const requiredFields = ['title', 'description', 'reporterName', 'status']
+  if (
+    Object.entries(ticketForm)
+      .filter(([k]) => requiredFields.includes(k))
+      .some(([_, v]) => !v)
+  ) {
+    throw new Error('Cannot create Ticket with empty fields')
+  }
+
+  return ticketForm as TicketCreationForm
 }
 
 export const getEmptyTicketForm = (

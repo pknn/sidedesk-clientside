@@ -10,35 +10,32 @@ import {
 import { getOr, getOrElse } from 'app/helpers/value'
 
 interface DataProps {
-  editingTicket?: TicketForm
+  ticketForm?: TicketForm
 }
 
 interface ActionProps {
-  onSave: VoidFunction
+  onSave: (ticketForm: TicketForm) => void
 }
 
 type ComponentProps = DataProps & ActionProps
 
 const getStringOrEmpty = getOr('')
 
-export const EditTicketContent = ({
-  editingTicket,
-  onSave,
-}: ComponentProps) => {
+export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
   const [title, setTitle] = useState<string>(
-    getStringOrEmpty(editingTicket?.title),
+    getStringOrEmpty(ticketForm?.title),
   )
   const [description, setDescription] = useState<string>(
-    getStringOrEmpty(editingTicket?.description),
+    getStringOrEmpty(ticketForm?.description),
   )
   const [reporterName, setReporterName] = useState<string>(
-    getStringOrEmpty(editingTicket?.reporterName),
+    getStringOrEmpty(ticketForm?.reporterName),
   )
   const [reporterEmail, setReporterEmail] = useState<string | undefined>(
-    editingTicket?.reporterEmail,
+    ticketForm?.reporterEmail,
   )
   const [status, setStatus] = useState<TicketStatus>(
-    getOrElse(editingTicket?.status, TicketStatus.Pending),
+    getOrElse(ticketForm?.status, TicketStatus.Pending),
   )
 
   const handleTextAreaChangeEvent = (
@@ -46,6 +43,17 @@ export const EditTicketContent = ({
   ) => {
     setDescription(event.target.value)
     event.target.style.height = `${event.target.scrollHeight}px`
+  }
+
+  const handleSave = () => {
+    onSave({
+      ...ticketForm,
+      title,
+      description,
+      reporterName,
+      reporterEmail,
+      status,
+    })
   }
 
   useLayoutEffect(() => {
@@ -63,6 +71,7 @@ export const EditTicketContent = ({
           placeholder="Title"
           type="text"
           onChange={(event) => setTitle(event.target.value)}
+          required
         />
       </Field>
       <Field>
@@ -103,6 +112,7 @@ export const EditTicketContent = ({
             value={reporterName}
             placeholder="Name"
             onChange={(event) => setReporterName(event.target.value)}
+            required
           />
           <Input
             classNames="text-xs"
@@ -115,7 +125,7 @@ export const EditTicketContent = ({
       </Field>
       <button
         className="p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none"
-        onClick={onSave}
+        onClick={handleSave}
       >
         Save
       </button>

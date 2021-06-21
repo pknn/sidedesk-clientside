@@ -4,21 +4,36 @@ import { Stage } from 'app/components/Layout'
 import { EditTicketContainer } from './EditTicketContainer'
 import { EditTicketContent } from './EditTicketContent'
 import { useAppDispatch, useAppSelector } from 'app/types/Store'
-import { actions } from 'app/store/features/Metadata/slice'
+import { actions as metadataActions } from 'app/store/features/Metadata/slice'
+import { TicketForm, toTicket, toTicketCreationForm } from 'app/types/Ticket'
+import { actions as boardActions } from 'app/store/features/Board/slice'
 
 export const EditTicket = () => {
   const shouldShowModal = useAppSelector(
     (state) => state.metadata.shouldShowEditTicketModal,
   )
-  const editingTicket = useAppSelector((state) => state.metadata.editingTicket)
+  const ticketForm = useAppSelector((state) => state.metadata.ticketForm)
+  const isEditing = useAppSelector((state) => state.metadata.isEditing)
 
   const dispatch = useAppDispatch()
 
   const handleOnStageDismiss = () => {
-    dispatch(actions.dismissEditTicketModal())
+    dispatch(metadataActions.dismissEditTicketModal())
   }
 
-  const handleSave = () => {
+  const handleSave = (ticketForm: TicketForm) => {
+    try {
+      if (isEditing) {
+        const ticket = toTicket(ticketForm)
+        dispatch(boardActions.editTicket(ticket))
+      } else {
+        const ticket = toTicketCreationForm(ticketForm)
+        dispatch(boardActions.createTicket(ticket))
+      }
+    } catch (error) {
+      alert(error)
+      return
+    }
     handleOnStageDismiss()
   }
 
@@ -26,8 +41,8 @@ export const EditTicket = () => {
     <Stage shouldShowStage={shouldShowModal} onDismiss={handleOnStageDismiss}>
       <EditTicketContainer>
         <EditTicketContent
-          key={editingTicket?.id}
-          editingTicket={editingTicket}
+          key={ticketForm?.id}
+          ticketForm={ticketForm}
           onSave={handleSave}
         />
       </EditTicketContainer>

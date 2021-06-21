@@ -5,7 +5,8 @@ import { MetadataState, ToggleEditTicketModalPayload } from './types'
 const initialState: MetadataState = {
   version: import.meta.env.VITE_CS_VERSION,
   shouldShowEditTicketModal: false,
-  editingTicket: getEmptyTicketForm(),
+  isEditing: false,
+  ticketForm: getEmptyTicketForm(),
 }
 
 const MetadataSlice = createSlice({
@@ -17,9 +18,10 @@ const MetadataSlice = createSlice({
       { payload }: PayloadAction<ToggleEditTicketModalPayload>,
     ) {
       state.shouldShowEditTicketModal = true
-      state.editingTicket = payload.withTicket
+      state.isEditing = !!payload.withTicket
+      state.ticketForm = payload.withTicket
         ? toTicketForm(payload.withTicket)
-        : getEmptyTicketForm()
+        : getEmptyTicketForm(payload.withStatus)
     },
     dismissEditTicketModal(state: MetadataState) {
       state.shouldShowEditTicketModal = false
