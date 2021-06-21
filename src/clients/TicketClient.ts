@@ -1,4 +1,4 @@
-import { Ticket, TicketCreationForm } from 'app/types/Ticket'
+import { Ticket, TicketBody, TicketCreationForm } from 'app/types/Ticket'
 import axios, { AxiosInstance } from 'axios'
 
 class TicketClient {
@@ -11,8 +11,21 @@ class TicketClient {
     })
   }
 
-  async getTickets() {
-    return (await this.client.get('/')).data
+  async getTickets(): Promise<Ticket[]> {
+    const { data } = await this.client.get('/')
+
+    return data.map(
+      (ticketBody: TicketBody): Ticket => ({
+        id: ticketBody.id,
+        title: ticketBody.title,
+        description: ticketBody.description,
+        reporterName: ticketBody.reporter_name,
+        reporterEmail: ticketBody.reporter_email,
+        status: ticketBody.status,
+        createdAt: ticketBody.created_at,
+        updatedAt: ticketBody.updated_at,
+      }),
+    )
   }
 
   async createTicket(ticket: TicketCreationForm) {
@@ -34,7 +47,18 @@ class TicketClient {
       reporter_email: ticket.reporterEmail,
       status: ticket.status,
     }
-    return (await this.client.put(`/${ticket.id}`, body)).data as Ticket
+    const { data } = await this.client.put(`/${ticket.id}`, body)
+
+    return {
+      id: data.id,
+      title: data.title,
+      description: data.description,
+      reporterName: data.reporter_name,
+      reporterEmail: data.reporter_email,
+      status: data.status,
+      createdAt: data.created_at,
+      updatedAt: data.updated_at,
+    }
   }
 }
 

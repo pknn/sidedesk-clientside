@@ -78,11 +78,10 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
         <select
           value={status}
           className="p-1 hover:bg-gray-200 rounded text-sm"
-          onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
-            setStatus(
-              getStatusFromString(event.target.value as TicketStatusKeys),
-            )
-          }
+          onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+            console.log(event.target.value as unknown as TicketStatus)
+            setStatus(event.target.value as unknown as TicketStatus)
+          }}
         >
           {ticketStatusOptions.map((status) => (
             <option

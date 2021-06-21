@@ -73,7 +73,7 @@ const BoardSlice = createSlice({
         )
 
         state[oldStatusKey] = state[oldStatusKey].filter(
-          (ticket) => ticket.status !== statusChangedFrom,
+          (ticket) => ticket.id !== updatedTicket.id,
         )
 
         state[newStatusKey].push(payload.updatedTicket)
