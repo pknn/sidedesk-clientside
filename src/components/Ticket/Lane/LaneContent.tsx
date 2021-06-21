@@ -28,13 +28,7 @@ export const LaneContent = ({
 }: ComponentProps) => (
   <div className="p-2 pt-0">
     {tickets.map((ticket, index) => (
-      <Card
-        key={ticket.id}
-        index={index}
-        id={ticket.id}
-        title={ticket.title}
-        reporterName={ticket.reporterName}
-      />
+      <Card key={ticket.id} index={index} ticket={ticket} />
     ))}
     {droppableProvided.placeholder}
     <AddItemButton
