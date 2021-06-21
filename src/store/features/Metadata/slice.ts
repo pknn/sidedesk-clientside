@@ -1,20 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { MetadataState } from './types'
+import { MetadataState, ToggleEditTicketModalPayload } from './types'
 
 const initialState: MetadataState = {
   version: import.meta.env.VITE_CS_VERSION,
   shouldShowEditTicketModal: false,
+  editingTicket: undefined,
 }
 
 const MetadataSlice = createSlice({
   name: 'metadata',
   initialState,
   reducers: {
-    toggleEditTicketModal(
+    showEditTicketModal(
       state: MetadataState,
-      { payload }: PayloadAction<boolean>,
+      { payload }: PayloadAction<ToggleEditTicketModalPayload>,
     ) {
-      state.shouldShowEditTicketModal = payload
+      state.shouldShowEditTicketModal = true
+      state.editingTicket = payload.withTicket
+    },
+    dismissEditTicketModal(state: MetadataState) {
+      state.shouldShowEditTicketModal = false
     },
   },
 })

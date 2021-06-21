@@ -14,7 +14,7 @@ export const EditTicket = () => {
   const dispatch = useAppDispatch()
 
   const handleOnStageDismiss = () => {
-    dispatch(actions.toggleEditTicketModal(false))
+    dispatch(actions.dismissEditTicketModal())
   }
 
   const handleSave = () => {
