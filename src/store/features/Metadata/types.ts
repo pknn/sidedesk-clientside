@@ -6,7 +6,7 @@ export interface MetadataState {
   version: Version
   shouldShowEditTicketModal: boolean
   isEditing: boolean
-  ticketForm: TicketForm
+  ticketForm?: TicketForm
 }
 
 export interface ToggleEditTicketModalPayload {

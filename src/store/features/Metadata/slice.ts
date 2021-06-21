@@ -6,7 +6,7 @@ const initialState: MetadataState = {
   version: import.meta.env.VITE_CS_VERSION,
   shouldShowEditTicketModal: false,
   isEditing: false,
-  ticketForm: getEmptyTicketForm(),
+  ticketForm: undefined,
 }
 
 const MetadataSlice = createSlice({
@@ -25,6 +25,7 @@ const MetadataSlice = createSlice({
     },
     dismissEditTicketModal(state: MetadataState) {
       state.shouldShowEditTicketModal = false
+      state.ticketForm = undefined
     },
   },
 })

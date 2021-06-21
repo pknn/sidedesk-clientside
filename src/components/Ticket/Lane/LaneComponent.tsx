@@ -29,7 +29,7 @@ export const LaneComponent = ({
   const dispatch = useAppDispatch()
 
   const handleAddButtonClick = () => {
-    dispatch(actions.showEditTicketModal({}))
+    dispatch(actions.showEditTicketModal({ withStatus: laneStatus }))
   }
 
   return (

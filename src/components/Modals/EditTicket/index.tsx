@@ -41,7 +41,7 @@ export const EditTicket = () => {
     <Stage shouldShowStage={shouldShowModal} onDismiss={handleOnStageDismiss}>
       <EditTicketContainer>
         <EditTicketContent
-          key={ticketForm?.id}
+          key={ticketForm?.id || Date.now()}
           ticketForm={ticketForm}
           onSave={handleSave}
         />
