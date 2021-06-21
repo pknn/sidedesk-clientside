@@ -66,7 +66,7 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
     <div className="p-6">
       <Field>
         <Input
-          classNames="text-xl font-semibold"
+          className="text-xl font-semibold"
           value={title}
           placeholder="Title"
           type="text"
@@ -106,7 +106,7 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
         <p className="m-2 text-xs font-semibold">Reporter</p>
         <div className="md:flex">
           <Input
-            classNames="text-xs"
+            className="text-xs"
             type="text"
             value={reporterName}
             placeholder="Name"
@@ -114,7 +114,7 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
             required
           />
           <Input
-            classNames="text-xs"
+            className="text-xs"
             type="text"
             value={reporterEmail}
             placeholder="Email (optional)"

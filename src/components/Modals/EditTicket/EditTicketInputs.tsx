@@ -10,7 +10,7 @@ interface InputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   placeholder: string
   type: string
-  classNames?: string
+  className?: string
   required?: boolean
 }
 
@@ -31,7 +31,7 @@ export const Input = ({
   onChange,
   placeholder,
   type,
-  classNames,
+  className,
   required,
 }: InputProps) => {
   const [isValid, setIsValid] = useState(true)
@@ -47,7 +47,7 @@ export const Input = ({
       className={[
         'p-2 outline-none rounded hover:bg-gray-200 focus:bg-white focus:ring-2 focus:ring-blue-500 mb-2 mr-2 w-full',
         !isValid && 'ring-2 ring-red-400',
-        classNames,
+        className,
       ].join(' ')}
       onBlur={handleBlur}
       placeholder={placeholder}
