@@ -11,10 +11,10 @@ import { Ticket, TicketCreationForm, TicketStatus } from 'app/types/Ticket'
 import { getReorderedTicketList, getMovedTicketLists } from './helpers'
 
 const initialState: BoardState = {
-  pendingTickets: getTickets(10, TicketStatus.Pending),
-  acceptedTickets: getTickets(10, TicketStatus.Accepted),
-  resolvedTickets: getTickets(10, TicketStatus.Resolved),
-  rejectedTickets: getTickets(10, TicketStatus.Rejected),
+  pendingTickets: getTickets(3, TicketStatus.Pending),
+  acceptedTickets: getTickets(3, TicketStatus.Accepted),
+  resolvedTickets: getTickets(3, TicketStatus.Resolved),
+  rejectedTickets: getTickets(3, TicketStatus.Rejected),
 }
 
 const BoardSlice = createSlice({
@@ -39,7 +39,7 @@ const BoardSlice = createSlice({
         state[sourceKey],
         state[sinkKey],
         payload.from.index,
-        payload.to.index,
+        payload.to,
       )
 
       state[sourceKey] = updatedSource

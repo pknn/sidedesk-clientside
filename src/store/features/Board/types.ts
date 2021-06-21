@@ -7,7 +7,7 @@ export interface BoardState {
   rejectedTickets: Ticket[]
 }
 
-interface TicketPosition {
+export interface TicketPosition {
   index: number
   laneId: string
 }
