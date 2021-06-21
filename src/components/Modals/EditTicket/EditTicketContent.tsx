@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react'
 
-import { Ticket, TicketStatus } from 'app/types/Ticket'
+import { TicketForm, TicketStatus } from 'app/types/Ticket'
 import { Field, Input, TextArea } from './EditTicketInputs'
 import { ticketStatusOptions } from 'app/helpers/mockTicket'
 import {
@@ -10,7 +10,7 @@ import {
 import { getOr, getOrElse } from 'app/helpers/value'
 
 interface DataProps {
-  editingTicket?: Ticket
+  editingTicket?: TicketForm
 }
 
 interface ActionProps {
