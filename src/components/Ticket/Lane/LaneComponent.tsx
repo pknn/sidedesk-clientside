@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd'
 
 import { Ticket, TicketStatus } from 'app/types/Ticket'
@@ -25,7 +25,6 @@ export const LaneComponent = ({
   droppableProvided,
   droppableStateSnapshot,
 }: ComponentProps): JSX.Element => {
-  const [isMouseOver, setIsMouseOver] = useState(false)
   const dispatch = useAppDispatch()
 
   const handleAddButtonClick = () => {
@@ -36,12 +35,10 @@ export const LaneComponent = ({
     <LaneContainer
       droppableProvided={droppableProvided}
       droppableStateSnapshot={droppableStateSnapshot}
-      onMouseOver={() => setIsMouseOver(true)}
-      onMouseLeave={() => setIsMouseOver(false)}
     >
       <LaneContent
         tickets={tickets}
-        shouldShowAddButton={laneStatus === TicketStatus.Pending || isMouseOver}
+        shouldShowAddButton={laneStatus === TicketStatus.Pending}
         onAddButtonClick={handleAddButtonClick}
         droppableProvided={droppableProvided}
       />

@@ -1,8 +1,8 @@
 export enum TicketStatus {
-  Pending = 1,
-  Accepted = 2,
-  Resolved = 3,
-  Rejected = 4,
+  Pending = 0,
+  Accepted = 1,
+  Resolved = 2,
+  Rejected = 3,
 }
 
 export interface Ticket {
