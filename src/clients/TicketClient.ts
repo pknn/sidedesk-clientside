@@ -28,7 +28,7 @@ class TicketClient {
     )
   }
 
-  async createTicket(ticket: TicketCreationForm) {
+  async createTicket(ticket: TicketCreationForm): Promise<Ticket> {
     const body = {
       title: ticket.title,
       description: ticket.description,
@@ -36,7 +36,18 @@ class TicketClient {
       reporter_email: ticket.reporterEmail,
       status: ticket.status,
     }
-    return this.client.post('/', body)
+    const { data } = await this.client.post('/', body)
+
+    return {
+      id: data.id,
+      title: data.title,
+      description: data.description,
+      reporterName: data.reporter_name,
+      reporterEmail: data.reporter_email,
+      status: data.status,
+      createdAt: data.created_at,
+      updatedAt: data.updated_at,
+    }
   }
 
   async updateTicket(ticket: Ticket) {

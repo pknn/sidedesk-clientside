@@ -21,8 +21,9 @@ export const fetchTickets = createAsyncThunk(
 
 export const createTicket = createAsyncThunk(
   'board/create-ticket',
-  async (ticket: TicketCreationForm, thunkApi) => {
-    ticketClient.createTicket(ticket)
+  async (ticketCreationForm: TicketCreationForm, thunkApi) => {
+    const ticket = await ticketClient.createTicket(ticketCreationForm)
+    console.log(ticket)
     thunkApi.dispatch(actions.createTicket(ticket))
   },
 )

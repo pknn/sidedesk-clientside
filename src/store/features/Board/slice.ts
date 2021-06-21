@@ -96,15 +96,8 @@ const BoardSlice = createSlice({
         state.tickets[newStatusKey].push(payload.updatedTicket)
       }
     },
-    createTicket(
-      state: BoardState,
-      { payload }: PayloadAction<TicketCreationForm>,
-    ) {
-      const ticket = {
-        ...getMockTicket(payload.status),
-        ...payload,
-      }
-      state.tickets[getKeyFromStatus(payload.status)].push(ticket)
+    createTicket(state: BoardState, { payload }: PayloadAction<Ticket>) {
+      state.tickets[getKeyFromStatus(payload.status)].push(payload)
     },
     setSortOption(state: BoardState, { payload }: PayloadAction<SortedBy>) {
       state.sortedBy = payload
