@@ -40,7 +40,7 @@ export const EditTicketContent = ({ onSave }: ActionProps) => {
       <Field>
         <select
           value={status}
-          className="p-1 hover:bg-gray-200 rounded"
+          className="p-1 hover:bg-gray-200 rounded text-sm"
           onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
             setStatus(
               getStatusFromString(event.target.value as TicketStatusKeys),
