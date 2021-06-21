@@ -7,12 +7,17 @@ interface PrimitiveProps {
   children: Children
 }
 
+interface ActionProps {
+  onMouseOver: VoidFunction
+  onMouseLeave: VoidFunction
+}
+
 interface DroppableProps {
   droppableProvided: DroppableProvided
   droppableStateSnapshot: DroppableStateSnapshot
 }
 
-type ComponentProps = PrimitiveProps & DroppableProps
+type ComponentProps = PrimitiveProps & ActionProps & DroppableProps
 
 const getLaneClassNames = (
   isDraggingOver: boolean,
@@ -29,13 +34,15 @@ const getLaneClassNames = (
     color = 'bg-red-100'
   }
   return [
-    'rounded rounded-t-none shadow-sm h-full relative transition-colors duration-150',
+    'shadow-sm h-full relative transition-colors duration-150',
     color,
   ].join(' ')
 }
 
 export const LaneContainer = ({
   children,
+  onMouseOver,
+  onMouseLeave,
   droppableProvided,
   droppableStateSnapshot,
 }: ComponentProps): JSX.Element => (
@@ -45,6 +52,8 @@ export const LaneContainer = ({
       droppableStateSnapshot.isDraggingOver,
       !!droppableStateSnapshot.draggingFromThisWith,
     )}
+    onMouseOverCapture={onMouseOver}
+    onMouseLeave={onMouseLeave}
   >
     {children}
   </div>

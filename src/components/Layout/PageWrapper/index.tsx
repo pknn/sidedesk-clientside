@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { Children } from 'app/types/Primitive'
+
 interface PrimitiveProps {
-  children: JSX.Element
+  children: Children
 }
 
 export const PageWrapper = ({ children }: PrimitiveProps): JSX.Element => (

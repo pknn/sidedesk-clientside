@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getTickets } from 'app/helpers/mockTicket'
-import { getKeyFromString } from 'app/helpers/statusMappers'
+import { getMockTicket, getTickets } from 'app/helpers/mockTicket'
+import { getKeyFromStatus, getKeyFromString } from 'app/helpers/statusMappers'
 import {
   BoardState,
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
-} from 'app/types/Board'
-import { Ticket, TicketStatus } from 'app/types/Ticket'
+} from 'app/store/features/Board/types'
+import { Ticket, TicketCreationForm, TicketStatus } from 'app/types/Ticket'
+import { getReorderedTicketList, getMovedTicketLists } from './helpers'
 
 const initialState: BoardState = {
   pendingTickets: getTickets(10, TicketStatus.Pending),
@@ -15,28 +16,6 @@ const initialState: BoardState = {
   resolvedTickets: getTickets(10, TicketStatus.Resolved),
   rejectedTickets: getTickets(10, TicketStatus.Rejected),
 }
-
-const getReorderedTicketList = (
-  tickets: Ticket[],
-  from: number,
-  to: number,
-) => {
-  const result = [...tickets]
-  const [movingTicket] = result.splice(from, 1)
-  result.splice(to, 0, movingTicket)
-
-  return result
-}
-
-const getMovedTicketLists = (
-  source: Ticket[],
-  sink: Ticket[],
-  from: number,
-  to: number,
-): [Ticket[], Ticket[]] => [
-  source.filter((_, index) => index !== from),
-  sink.slice(0, to).concat(source[from]).concat(sink.slice(to)),
-]
 
 const BoardSlice = createSlice({
   name: 'board',
@@ -65,6 +44,23 @@ const BoardSlice = createSlice({
 
       state[sourceKey] = updatedSource
       state[sinkKey] = updatedSink
+    },
+    editTicket(state: BoardState, { payload }: PayloadAction<Ticket>) {
+      const tickets = state[getKeyFromStatus(payload.status)].filter(
+        (ticket) => ticket.id !== payload.id,
+      )
+      tickets.push(payload)
+      state[getKeyFromStatus(payload.status)] = tickets
+    },
+    createTicket(
+      state: BoardState,
+      { payload }: PayloadAction<TicketCreationForm>,
+    ) {
+      const ticket = {
+        ...getMockTicket(payload.status),
+        ...payload,
+      }
+      state[getKeyFromStatus(payload.status)].push(ticket)
     },
   },
 })

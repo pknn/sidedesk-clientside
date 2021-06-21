@@ -1,4 +1,4 @@
-import { BoardState } from 'app/types/Board'
+import { BoardState } from 'app/store/features/Board/types'
 import { TicketStatus } from 'app/types/Ticket'
 
 export type BoardKeys = keyof BoardState

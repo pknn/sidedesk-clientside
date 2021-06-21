@@ -10,12 +10,16 @@ interface DataProps {
   reporterName: string
 }
 
+interface ActionProps {
+  onClick: VoidFunction
+}
+
 interface DraggableProps {
   draggableProvided: DraggableProvided
   draggableStateSnapshot: DraggableStateSnapshot
 }
 
-type ComponentProps = DataProps & DraggableProps
+type ComponentProps = DataProps & ActionProps & DraggableProps
 
 export const CardComponent = ({
   id,
@@ -23,10 +27,12 @@ export const CardComponent = ({
   reporterName,
   draggableProvided,
   draggableStateSnapshot,
+  onClick,
 }: ComponentProps): JSX.Element => (
   <CardContainer
     draggableProvided={draggableProvided}
     draggableStateSnapshot={draggableStateSnapshot}
+    onClick={onClick}
   >
     <CardContent id={id} title={title} reporterName={reporterName} />
   </CardContainer>

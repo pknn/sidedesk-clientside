@@ -7,12 +7,16 @@ interface PrimitiveProps {
   children: Children
 }
 
+interface ActionProps {
+  onClick: VoidFunction
+}
+
 interface DraggableProps {
   draggableProvided: DraggableProvided
   draggableStateSnapshot: DraggableStateSnapshot
 }
 
-type ComponentProps = PrimitiveProps & DraggableProps
+type ComponentProps = PrimitiveProps & ActionProps & DraggableProps
 
 const getCardClassNames = (isDragging: boolean) => {
   return [
@@ -23,6 +27,7 @@ const getCardClassNames = (isDragging: boolean) => {
 
 export const CardContainer = ({
   children,
+  onClick,
   draggableProvided,
   draggableStateSnapshot,
 }: ComponentProps): JSX.Element => (
@@ -30,6 +35,7 @@ export const CardContainer = ({
     ref={draggableProvided.innerRef}
     {...draggableProvided.draggableProps}
     {...draggableProvided.dragHandleProps}
+    onClick={onClick}
     className={getCardClassNames(draggableStateSnapshot.isDragging)}
   >
     {children}

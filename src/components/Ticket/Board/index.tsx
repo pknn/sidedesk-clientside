@@ -2,7 +2,7 @@ import React from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 
 import { useAppDispatch, useAppSelector } from 'app/types/Store'
-import { actions } from 'app/store/features/Board/boardSlice'
+import { actions } from 'app/store/features/Board/slice'
 import { BoardContainer } from './BoardContainer'
 import { BoardContent } from './BoardContent'
 import {
