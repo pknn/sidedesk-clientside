@@ -31,9 +31,6 @@ export const LaneContent = ({
       <Card key={ticket.id} index={index} ticket={ticket} />
     ))}
     {droppableProvided.placeholder}
-    <AddItemButton
-      shouldShowAddButton={shouldShowAddButton}
-      onClick={onAddButtonClick}
-    />
+    {shouldShowAddButton && <AddItemButton onClick={onAddButtonClick} />}
   </div>
 )

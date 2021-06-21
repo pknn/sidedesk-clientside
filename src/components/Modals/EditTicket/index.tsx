@@ -44,6 +44,7 @@ export const EditTicket = () => {
           key={ticketForm?.id || Date.now()}
           ticketForm={ticketForm}
           onSave={handleSave}
+          isEditing={isEditing}
         />
       </EditTicketContainer>
     </Stage>

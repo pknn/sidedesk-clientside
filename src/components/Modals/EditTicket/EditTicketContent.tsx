@@ -3,14 +3,12 @@ import React, { useLayoutEffect, useState } from 'react'
 import { TicketForm, TicketStatus } from 'app/types/Ticket'
 import { Field, Input, TextArea } from './EditTicketInputs'
 import { ticketStatusOptions } from 'app/helpers/mockTicket'
-import {
-  getStatusFromString,
-  TicketStatusKeys,
-} from 'app/helpers/statusMappers'
 import { getOr, getOrElse } from 'app/helpers/value'
+import { DateString } from './EditTicket.styled'
 
 interface DataProps {
   ticketForm?: TicketForm
+  isEditing: boolean
 }
 
 interface ActionProps {
@@ -21,7 +19,11 @@ type ComponentProps = DataProps & ActionProps
 
 const getStringOrEmpty = getOr('')
 
-export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
+export const EditTicketContent = ({
+  ticketForm,
+  isEditing,
+  onSave,
+}: ComponentProps) => {
   const [title, setTitle] = useState<string>(
     getStringOrEmpty(ticketForm?.title),
   )
@@ -64,9 +66,21 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
 
   return (
     <div className="p-6">
+      <div>
+        {ticketForm?.createdAt && (
+          <DateString className="text-xs ml-2 text-gray-400">
+            Created at: {new Date(ticketForm.createdAt).toLocaleString('en-US')}
+          </DateString>
+        )}
+        {ticketForm?.updatedAt && (
+          <DateString className="text-xs ml-2 text-gray-400">
+            Updated at: {new Date(ticketForm.updatedAt).toLocaleString('en-US')}
+          </DateString>
+        )}
+      </div>
       <Field>
         <Input
-          classNames="text-xl font-semibold"
+          className="text-xl font-semibold"
           value={title}
           placeholder="Title"
           type="text"
@@ -74,26 +88,28 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
           required
         />
       </Field>
-      <Field>
-        <select
-          value={status}
-          className="p-1 hover:bg-gray-200 rounded text-sm"
-          onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
-            console.log(event.target.value as unknown as TicketStatus)
-            setStatus(event.target.value as unknown as TicketStatus)
-          }}
-        >
-          {ticketStatusOptions.map((status) => (
-            <option
-              className="rounded text-sm bg-gray-300"
-              key={status}
-              value={status}
-            >
-              {TicketStatus[status]}
-            </option>
-          ))}
-        </select>
-      </Field>
+      {isEditing && (
+        <Field>
+          <select
+            value={status}
+            className="p-1 hover:bg-gray-200 rounded text-sm"
+            onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+              console.log(event.target.value as unknown as TicketStatus)
+              setStatus(event.target.value as unknown as TicketStatus)
+            }}
+          >
+            {ticketStatusOptions.map((status) => (
+              <option
+                className="rounded text-sm bg-gray-300"
+                key={status}
+                value={status}
+              >
+                {TicketStatus[status]}
+              </option>
+            ))}
+          </select>
+        </Field>
+      )}
       <Field>
         <p className="m-2 text-xs font-semibold">Description</p>
         <TextArea
@@ -106,7 +122,7 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
         <p className="m-2 text-xs font-semibold">Reporter</p>
         <div className="md:flex">
           <Input
-            classNames="text-xs"
+            className="text-xs"
             type="text"
             value={reporterName}
             placeholder="Name"
@@ -114,7 +130,7 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
             required
           />
           <Input
-            classNames="text-xs"
+            className="text-xs"
             type="text"
             value={reporterEmail}
             placeholder="Email (optional)"
@@ -123,7 +139,7 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
         </div>
       </Field>
       <button
-        className="p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none"
+        className="m-2 p-2 bg-blue-400 hover:bg-blue-700 hover:text-white rounded text-sm focus:outline-none"
         onClick={handleSave}
       >
         Save
