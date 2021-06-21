@@ -3,14 +3,11 @@ import React, { useLayoutEffect, useState } from 'react'
 import { TicketForm, TicketStatus } from 'app/types/Ticket'
 import { Field, Input, TextArea } from './EditTicketInputs'
 import { ticketStatusOptions } from 'app/helpers/mockTicket'
-import {
-  getStatusFromString,
-  TicketStatusKeys,
-} from 'app/helpers/statusMappers'
 import { getOr, getOrElse } from 'app/helpers/value'
 
 interface DataProps {
   ticketForm?: TicketForm
+  isEditing: boolean
 }
 
 interface ActionProps {
@@ -21,7 +18,11 @@ type ComponentProps = DataProps & ActionProps
 
 const getStringOrEmpty = getOr('')
 
-export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
+export const EditTicketContent = ({
+  ticketForm,
+  isEditing,
+  onSave,
+}: ComponentProps) => {
   const [title, setTitle] = useState<string>(
     getStringOrEmpty(ticketForm?.title),
   )
@@ -74,26 +75,28 @@ export const EditTicketContent = ({ ticketForm, onSave }: ComponentProps) => {
           required
         />
       </Field>
-      <Field>
-        <select
-          value={status}
-          className="p-1 hover:bg-gray-200 rounded text-sm"
-          onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
-            console.log(event.target.value as unknown as TicketStatus)
-            setStatus(event.target.value as unknown as TicketStatus)
-          }}
-        >
-          {ticketStatusOptions.map((status) => (
-            <option
-              className="rounded text-sm bg-gray-300"
-              key={status}
-              value={status}
-            >
-              {TicketStatus[status]}
-            </option>
-          ))}
-        </select>
-      </Field>
+      {isEditing && (
+        <Field>
+          <select
+            value={status}
+            className="p-1 hover:bg-gray-200 rounded text-sm"
+            onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+              console.log(event.target.value as unknown as TicketStatus)
+              setStatus(event.target.value as unknown as TicketStatus)
+            }}
+          >
+            {ticketStatusOptions.map((status) => (
+              <option
+                className="rounded text-sm bg-gray-300"
+                key={status}
+                value={status}
+              >
+                {TicketStatus[status]}
+              </option>
+            ))}
+          </select>
+        </Field>
+      )}
       <Field>
         <p className="m-2 text-xs font-semibold">Description</p>
         <TextArea
