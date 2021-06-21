@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getMockTicket, ticketStatusOptions } from 'app/helpers/mockTicket'
+import { ticketStatusOptions } from 'app/helpers/mockTicket'
 import { getKeyFromStatus, getKeyFromString } from 'app/helpers/statusMappers'
 import {
   BoardState,
@@ -9,12 +9,7 @@ import {
   MoveInLaneActionPayload,
   SortedBy,
 } from 'app/store/features/Board/types'
-import {
-  Ticket,
-  TicketCreationForm,
-  Tickets,
-  TicketStatus,
-} from 'app/types/Ticket'
+import { Ticket, Tickets, TicketStatus } from 'app/types/Ticket'
 import {
   getReorderedTicketList,
   getMovedTicketLists,
