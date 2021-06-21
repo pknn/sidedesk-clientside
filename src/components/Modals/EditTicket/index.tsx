@@ -21,13 +21,13 @@ export const EditTicket = () => {
     dispatch(metadataActions.dismissEditTicketModal())
   }
 
-  const handleSave = (ticketForm: TicketForm) => {
+  const handleSave = (updatedTicketForm: TicketForm) => {
     try {
       if (isEditing) {
-        const ticket = toTicket(ticketForm)
+        const ticket = toTicket(updatedTicketForm)
         dispatch(updateTicket(ticket))
       } else {
-        const ticket = toTicketCreationForm(ticketForm)
+        const ticket = toTicketCreationForm(updatedTicketForm)
         dispatch(createTicket(ticket))
       }
     } catch (error) {

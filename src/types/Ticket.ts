@@ -61,7 +61,7 @@ export const toTicket = (ticketForm: TicketForm): Ticket => {
   if (
     Object.entries(ticketForm)
       .filter(([k]) => requiredFields.includes(k))
-      .some(([_, v]) => !v)
+      .some(([_, v]) => v === undefined)
   ) {
     throw new Error('Cannot create Ticket with empty fields')
   }
@@ -76,7 +76,7 @@ export const toTicketCreationForm = (
   if (
     Object.entries(ticketForm)
       .filter(([k]) => requiredFields.includes(k))
-      .some(([_, v]) => !v)
+      .some(([_, v]) => v === undefined)
   ) {
     throw new Error('Cannot create Ticket with empty fields')
   }
