@@ -50,7 +50,9 @@ export const moveTicket = createAsyncThunk(
   async (payload: MoveCrossLaneActionPayload, thunkApi) => {
     const state = thunkApi.getState() as ApplicationState
     const ticketToUpdate =
-      state.board[getKeyFromString(payload.from.laneId)][payload.from.index]
+      state.board.tickets[getKeyFromString(payload.from.laneId)][
+        payload.from.index
+      ]
     const ticketWithUpdatedStatus: Ticket = {
       ...ticketToUpdate,
       status: getStatusFromString(payload.to.laneId as TicketStatusKeys),

@@ -5,6 +5,13 @@ export enum TicketStatus {
   Rejected = 3,
 }
 
+export interface Tickets {
+  pendingTickets: Ticket[]
+  acceptedTickets: Ticket[]
+  resolvedTickets: Ticket[]
+  rejectedTickets: Ticket[]
+}
+
 export interface Ticket {
   id: number
   title: string

@@ -1,10 +1,11 @@
-import { Ticket, TicketStatus } from 'app/types/Ticket'
+import { Ticket, Tickets, TicketStatus } from 'app/types/Ticket'
+
+export type SortedBy = 'id' | 'createdAt' | 'updatedAt'
+export const sortedByOptions: SortedBy[] = ['id', 'createdAt', 'updatedAt']
 
 export interface BoardState {
-  pendingTickets: Ticket[]
-  acceptedTickets: Ticket[]
-  resolvedTickets: Ticket[]
-  rejectedTickets: Ticket[]
+  tickets: Tickets
+  sortedBy: SortedBy
 }
 
 export interface TicketPosition {

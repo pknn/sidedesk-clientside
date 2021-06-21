@@ -13,7 +13,7 @@ import { BoardHeader } from './BoardHeader'
 import { moveTicket } from 'app/store/features/Board/thunk'
 
 export const Board = (): JSX.Element => {
-  const boardState = useAppSelector((state) => state.board)
+  const tickets = useAppSelector((state) => state.board.tickets)
   const dispatch = useAppDispatch()
   const handleDragEnd = (result: DropResult) => {
     const { source, destination } = result
@@ -32,7 +32,7 @@ export const Board = (): JSX.Element => {
   return (
     <BoardContainer onDragEnd={handleDragEnd}>
       <BoardHeader />
-      <BoardContent {...boardState} />
+      <BoardContent {...tickets} />
     </BoardContainer>
   )
 }

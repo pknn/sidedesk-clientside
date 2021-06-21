@@ -7,15 +7,28 @@ import {
   EditTicketActionPayload,
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
+  SortedBy,
 } from 'app/store/features/Board/types'
-import { Ticket, TicketCreationForm, TicketStatus } from 'app/types/Ticket'
-import { getReorderedTicketList, getMovedTicketLists } from './helpers'
+import {
+  Ticket,
+  TicketCreationForm,
+  Tickets,
+  TicketStatus,
+} from 'app/types/Ticket'
+import {
+  getReorderedTicketList,
+  getMovedTicketLists,
+  getSortedTicket,
+} from './helpers'
 
 const initialState: BoardState = {
-  pendingTickets: [],
-  acceptedTickets: [],
-  resolvedTickets: [],
-  rejectedTickets: [],
+  tickets: {
+    pendingTickets: [],
+    acceptedTickets: [],
+    resolvedTickets: [],
+    rejectedTickets: [],
+  },
+  sortedBy: 'id',
 }
 
 const BoardSlice = createSlice({
@@ -27,7 +40,11 @@ const BoardSlice = createSlice({
       { payload }: PayloadAction<MoveInLaneActionPayload>,
     ) => {
       const key = getKeyFromString(payload.laneId)
-      state[key] = getReorderedTicketList(state[key], payload.from, payload.to)
+      state.tickets[key] = getReorderedTicketList(
+        state.tickets[key],
+        payload.from,
+        payload.to,
+      )
     },
     moveCrossLane: (
       state: BoardState,
@@ -37,14 +54,14 @@ const BoardSlice = createSlice({
       const sinkKey = getKeyFromString(payload.to.laneId)
 
       const [updatedSource, updatedSink] = getMovedTicketLists(
-        state[sourceKey],
-        state[sinkKey],
+        state.tickets[sourceKey],
+        state.tickets[sinkKey],
         payload.from.index,
         payload.to,
       )
 
-      state[sourceKey] = updatedSource
-      state[sinkKey] = updatedSink
+      state.tickets[sourceKey] = updatedSource
+      state.tickets[sinkKey] = updatedSink
     },
     setTickets(state: BoardState, { payload }: PayloadAction<Ticket[]>) {
       ticketStatusOptions.map((status) => {
@@ -52,7 +69,7 @@ const BoardSlice = createSlice({
         const tickets = payload
           .filter((ticket) => ticket.status === status)
           .sort((a, b) => a.id - b.id)
-        state[key] = tickets
+        state.tickets[key] = tickets
       })
     },
     editTicket(
@@ -62,21 +79,21 @@ const BoardSlice = createSlice({
       const { isStatusChanged, statusChangedFrom, updatedTicket } = payload
       if (!isStatusChanged) {
         const statusKey = getKeyFromStatus(updatedTicket.status as TicketStatus)
-        state[statusKey] = state[statusKey].filter(
+        state.tickets[statusKey] = state.tickets[statusKey].filter(
           (ticket) => ticket.id !== updatedTicket.id,
         )
-        state[statusKey].push(updatedTicket)
+        state.tickets[statusKey].push(updatedTicket)
       } else {
         const oldStatusKey = getKeyFromStatus(statusChangedFrom as TicketStatus)
         const newStatusKey = getKeyFromStatus(
           updatedTicket.status as TicketStatus,
         )
 
-        state[oldStatusKey] = state[oldStatusKey].filter(
+        state.tickets[oldStatusKey] = state.tickets[oldStatusKey].filter(
           (ticket) => ticket.id !== updatedTicket.id,
         )
 
-        state[newStatusKey].push(payload.updatedTicket)
+        state.tickets[newStatusKey].push(payload.updatedTicket)
       }
     },
     createTicket(
@@ -87,7 +104,17 @@ const BoardSlice = createSlice({
         ...getMockTicket(payload.status),
         ...payload,
       }
-      state[getKeyFromStatus(payload.status)].push(ticket)
+      state.tickets[getKeyFromStatus(payload.status)].push(ticket)
+    },
+    setSortOption(state: BoardState, { payload }: PayloadAction<SortedBy>) {
+      state.sortedBy = payload
+      Object.keys(state.tickets).forEach((key) => {
+        const keyOfTicket = key as keyof Tickets
+        state.tickets[keyOfTicket] = getSortedTicket(
+          state.sortedBy,
+          state.tickets[keyOfTicket],
+        )
+      })
     },
   },
 })

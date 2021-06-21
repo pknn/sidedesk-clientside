@@ -3,11 +3,11 @@ import { DraggableLocation } from 'react-beautiful-dnd'
 import {
   MoveCrossLaneActionPayload,
   MoveInLaneActionPayload,
+  SortedBy,
   TicketPosition,
 } from 'app/store/features/Board/types'
 import { Ticket } from 'app/types/Ticket'
 import {
-  getStatusFromKey,
   getStatusFromString,
   TicketStatusKeys,
 } from 'app/helpers/statusMappers'
@@ -62,3 +62,16 @@ export const getMovedTicketLists = (
     })
     .concat(sink.slice(to.index)),
 ]
+
+export const getSortedTicket = (sortedBy: SortedBy, tickets: Ticket[]) => {
+  switch (sortedBy) {
+    case 'id':
+      return tickets.sort((a, b) => a[sortedBy] - b[sortedBy])
+    case 'createdAt':
+    case 'updatedAt':
+      return tickets.sort(
+        (a, b) =>
+          new Date(a[sortedBy]).getTime() - new Date(b[sortedBy]).getTime(),
+      )
+  }
+}

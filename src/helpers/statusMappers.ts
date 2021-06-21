@@ -1,7 +1,6 @@
-import { BoardState } from 'app/store/features/Board/types'
-import { TicketStatus } from 'app/types/Ticket'
+import { Tickets, TicketStatus } from 'app/types/Ticket'
 
-export type BoardKeys = keyof BoardState
+export type BoardKeys = keyof Tickets
 export type TicketStatusKeys = 'Pending' | 'Accepted' | 'Resolved' | 'Rejected'
 
 const statusKeyMap: Record<TicketStatus, BoardKeys> = {
