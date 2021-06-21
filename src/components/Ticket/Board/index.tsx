@@ -24,7 +24,8 @@ export const Board = (): JSX.Element => {
         actions.moveInLane(getMoveInLaneActionPayload(source, destination)),
       )
     } else {
-      dispatch(moveTicket(getMoveCrossLaneActionPayload(source, destination)))
+      const payload = getMoveCrossLaneActionPayload(source, destination)
+      dispatch(moveTicket(payload))
     }
   }
 

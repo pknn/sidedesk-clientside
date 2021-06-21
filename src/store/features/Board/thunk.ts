@@ -55,7 +55,7 @@ export const moveTicket = createAsyncThunk(
       ...ticketToUpdate,
       status: getStatusFromString(payload.to.laneId as TicketStatusKeys),
     }
-    await ticketClient.updateTicket(ticketWithUpdatedStatus)
     thunkApi.dispatch(actions.moveCrossLane(payload))
+    await ticketClient.updateTicket(ticketWithUpdatedStatus)
   },
 )
