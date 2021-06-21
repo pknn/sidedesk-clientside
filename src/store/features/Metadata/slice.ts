@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getEmptyTicketForm, toTicketForm } from 'app/types/Ticket'
 import { MetadataState, ToggleEditTicketModalPayload } from './types'
 
 const initialState: MetadataState = {
   version: import.meta.env.VITE_CS_VERSION,
   shouldShowEditTicketModal: false,
-  editingTicket: undefined,
+  editingTicket: getEmptyTicketForm(),
 }
 
 const MetadataSlice = createSlice({
@@ -17,6 +18,8 @@ const MetadataSlice = createSlice({
     ) {
       state.shouldShowEditTicketModal = true
       state.editingTicket = payload.withTicket
+        ? toTicketForm(payload.withTicket)
+        : getEmptyTicketForm()
     },
     dismissEditTicketModal(state: MetadataState) {
       state.shouldShowEditTicketModal = false
